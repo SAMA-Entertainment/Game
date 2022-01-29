@@ -32,13 +32,15 @@ namespace Assets.Scripts
 
         public void PlayerNear(Transform player)
         {
+            if(_state != STATE_FLEEING){
+                spottedParticle.Play();
+            }
             _state = STATE_FLEEING;
 
             Vector3 dir = transform.position - player.transform.position;
             Vector3 newPos = transform.position + dir;
  
             agent.SetDestination(newPos);
-            spottedParticle.Play();
         }
     }
 }
