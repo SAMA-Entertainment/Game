@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9059358525143217554}
   - component: {fileID: 9059358525143217555}
   - component: {fileID: 9059358525143217552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 9059358525201344298}
   - component: {fileID: 9059358525201344299}
   - component: {fileID: 9059358525201344301}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Third Person Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ MonoBehaviour:
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
-    m_InvertInput: 1
+    m_InvertInput: 0
     m_MinValue: -180
     m_MaxValue: 180
     m_Wrap: 1
@@ -302,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9059358525294242218}
   - component: {fileID: 9059358525294242219}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 9059358525605203479}
   - component: {fileID: 9059358525605203476}
   - component: {fileID: 9059358525605203477}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 9059358525910447348}
   - component: {fileID: 9059358525910447350}
   - component: {fileID: 9059358525910447351}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9059358526111145004}
   - component: {fileID: 9059358526111145005}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 9059358526266541625}
   - component: {fileID: 9059358526266541622}
   - component: {fileID: 9059358526266541623}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 9059358526365545418}
   - component: {fileID: 9059358526365545420}
   - component: {fileID: 9059358526365545421}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,7 +866,8 @@ GameObject:
   - component: {fileID: 9059358526509905877}
   - component: {fileID: 9059358526509905879}
   - component: {fileID: 9059358526509905876}
-  m_Layer: 0
+  - component: {fileID: 6613146416569230730}
+  m_Layer: 9
   m_Name: Third Person Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -880,7 +881,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9059358526509905874}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -923,6 +924,19 @@ MonoBehaviour:
   cam: {fileID: 0}
   speed: 6
   turnSmoothTime: 0.1
+--- !u!135 &6613146416569230730
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9059358526509905874}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9059358526932001601
 GameObject:
   m_ObjectHideFlags: 3
@@ -933,7 +947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9059358526932001603}
   - component: {fileID: 9059358526932001600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}

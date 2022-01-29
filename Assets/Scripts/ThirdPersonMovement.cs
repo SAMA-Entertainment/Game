@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
 
@@ -26,6 +27,13 @@ public class ThirdPersonMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 dir = new Vector3(horizontal, 0f, vertical).normalized;
         // normalized: removes the ability to move faster in diagonals
+        
+        Vector3 moveVector = Vector3.zero;
+ 
+        if (controller.isGrounded == false)
+        {
+            moveVector += Physics.gravity;
+        }
 
         if (dir.magnitude >= 0.1f) // enough movement
         {
@@ -34,8 +42,27 @@ public class ThirdPersonMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(movDir.normalized * speed * Time.deltaTime);
+            controller.Move((moveVector + movDir.normalized * speed) * Time.deltaTime);
         }
-        
+        else
+        {
+            controller.Move(moveVector * Time.deltaTime);
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        RollingMikuniController mikuniController =
+            other.gameObject.GetComponent<RollingMikuniController>();
+        if (mikuniController != null)
+        {
+            // Debug.Log("Mikuni detected");
+            mikuniController.PlayerNear(transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("OnTriggerExit " + other.gameObject.name);
     }
 }
