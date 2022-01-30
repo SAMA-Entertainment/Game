@@ -113,6 +113,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -772798723794940250, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -772798723794940250, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 609f0d314a2c6e64f880511e9ac1cfcf, type: 2}
     - target: {fileID: 919132149155446097, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
       propertyPath: m_Name
       value: cauldron
