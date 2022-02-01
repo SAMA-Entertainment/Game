@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7117111268148201592
+--- !u!114 &-8118561057547302978
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LiquidMat
-  m_Shader: {fileID: -6465566751694194690, guid: e6c84d4ddea64af4e8546b5eb5da0e74, type: 3}
+  m_Name: Water
+  m_Shader: {fileID: -6465566751694194690, guid: 008e55b7b9a71c74e859afb2e251123a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -89,8 +89,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_52ed521347234044948ed88ce55fca50: 0.316
-    - Vector1_7cafb6a86987463cbde80d443ea5913e: 0
+    - Vector1_0e0af52a7f504073b730c50ea3ed6255: 2
+    - Vector1_2414113877644bc39365f9fa4bd93373: 0.05
+    - Vector1_44af999cf94349448a7b97409173e27a: 2
+    - Vector1_49bee7512f224d7b8bdf689fdf27f409: 1.1
+    - Vector1_51d5d011aa4e4728a8cfa8b604031a60: 200
+    - Vector1_69763bec14b045f9932f5de678a0f140: 2
+    - Vector1_7445927a002a4d4bae78d9d45df8eb91: 10
+    - Vector1_8ea245a99a574fddaf11f248433723fd: 2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -115,13 +121,15 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _WaterDepth: 10
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_2dca3220045b4bc19d6425b5efebc384: {r: 0.9294118, g: 0.8784314, b: 0.8470588, a: 0}
-    - Color_4061d23169e24a219a1551c5413d0e51: {r: 0.8113208, g: 0.41714135, b: 0.44996846, a: 1}
+    - Color_8ad7e287d5d64b17a1f7fc162ccb5f2b: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DeepWaterColor: {r: 0.08627441, g: 0, b: 0.7294118, a: 0.19607843}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShallowWaterColor: {r: 0, g: 0.65882355, b: 1, a: 0.19607843}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
