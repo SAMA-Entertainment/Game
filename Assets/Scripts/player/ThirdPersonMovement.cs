@@ -51,8 +51,7 @@ public class ThirdPersonMovement : MonoBehaviour
      */
     void OnTriggerStay(Collider other)
     {
-        RollingMikuniController mikuniController =
-            other.gameObject.GetComponent<RollingMikuniController>();
+        Mikuni mikuniController = other.gameObject.GetComponent<Mikuni>();
         if (mikuniController != null)
         {
             // Debug.Log("Mikuni detected");

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6327175516911901995}
-  - component: {fileID: 7912649612140957293}
+  - component: {fileID: 2804314971437827457}
   - component: {fileID: 4871647320185628952}
   m_Layer: 0
   m_Name: Cauldron
@@ -33,8 +33,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &7912649612140957293
-SphereCollider:
+--- !u!65 &2804314971437827457
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -44,8 +44,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 7.39
-  m_Center: {x: 0, y: -0.61, z: 0}
+  m_Size: {x: 18, y: 10.15, z: 14.35}
+  m_Center: {x: -0.02, y: -1, z: 0}
 --- !u!208 &4871647320185628952
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -72,6 +72,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
       propertyPath: m_LocalPosition.x
