@@ -9,6 +9,7 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
+    public Animator animator;
     
     public float speed = 6f;
     public float turnSmoothTime = 0.1f;
@@ -37,10 +38,12 @@ public class ThirdPersonMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            animator.SetFloat("Speed", speed);
             controller.Move((moveVector + movDir.normalized * speed) * Time.deltaTime);
         }
         else
         {
+            animator.SetFloat("Speed", 0f);
             controller.Move(moveVector * Time.deltaTime);
         }
     }
