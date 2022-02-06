@@ -19,7 +19,7 @@ namespace mikunis
     
         protected virtual void FixedUpdate()
         {
-            if (_state == STATE_FLEEING && agent.velocity.sqrMagnitude == 0)
+            if (_state == STATE_FLEEING && agent.velocity.sqrMagnitude <= 0.05)
             {
                 _state = STATE_IDLE;
             }

@@ -10,6 +10,7 @@ namespace mikunis
 
         public float bodyStartOffset;
         public Transform body;
+        public Animator animator;
         // List of gameObject to hide when the Mikuni is hiding from the player
         public List<GameObject> bodyParts = new List<GameObject>();
 
@@ -30,6 +31,11 @@ namespace mikunis
         public void ShowBodyParts()
         {
             if (!_hiding) return;
+            if (animator != null)
+            {
+                animator.SetBool("IsHiding", false);
+                animator.SetBool("IsRunning", true);
+            }
             _hiding = false;
             body.transform.position += bodyStartOffset * Vector3.up;
             UpdateBodyParts();
@@ -38,6 +44,11 @@ namespace mikunis
         public void HideBodyParts()
         {
             if (_hiding) return;
+            if (animator != null)
+            {
+                animator.SetBool("IsHiding", true);
+                animator.SetBool("IsRunning", false);
+            }
             _hiding = true;
             body.transform.position += bodyStartOffset * Vector3.down;
             UpdateBodyParts();
