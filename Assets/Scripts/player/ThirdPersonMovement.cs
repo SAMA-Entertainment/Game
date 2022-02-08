@@ -9,10 +9,13 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
-    
     public float speed = 6f;
+    public float stamina = 10;
+    public float maxstamina = 10;
+    public bool isRunning;
+    public float gravitymultiplier= -9.81f;
+    public float jumpHeight = 1.0f;
     public float turnSmoothTime = 0.1f;
-
     private float _turnSmoothVelocity;
     
     void Update()
@@ -23,24 +26,55 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector3 dir = new Vector3(horizontal, 0f, vertical).normalized; 
         // Normalize the vector so the speed is constant
         // Here you can modify the speed (sprint)
-        
-        
         // Add gravity force
         Vector3 moveVector = Vector3.zero;
-        if (controller.isGrounded == false)
-            moveVector += Physics.gravity;
-
+        if(Input.GetButton("Jump") && controller.isGrounded)
+        {
+            moveVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravitymultiplier);
+        }
+       
+        else if (controller.isGrounded == false)
+        {
+            moveVector.y += gravitymultiplier * Time.deltaTime;
+        }
         if (dir.magnitude >= 0.1f) // enough movement
         {
+            float speed = this.speed;
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                isRunning = true; 
+                speed *=1.5f;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                isRunning = false;
+            }
+            if (isRunning)
+            {
+                speed *=1.5f;
+                stamina -= Time.deltaTime;
+                if (stamina < 0)
+                {
+                    stamina = 0;
+                    isRunning = false;
+                }
+            }
+            else if (stamina < maxstamina)
+            {
+                stamina += Time.deltaTime;
+            }
             float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
             Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move((moveVector + movDir.normalized * speed) * Time.deltaTime);
         }
         else
         {
+            if (!isRunning && stamina < maxstamina)
+            {
+                stamina += Time.deltaTime;
+            }
             controller.Move(moveVector * Time.deltaTime);
         }
     }
