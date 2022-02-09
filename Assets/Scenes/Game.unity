@@ -16361,11 +16361,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9059358526932001603, guid: 00189c43b33d8c34683e333e3fcfb507, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017073113
+      value: -0.00000001707311
       objectReference: {fileID: 0}
     - target: {fileID: 9059358526932001603, guid: 00189c43b33d8c34683e333e3fcfb507, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000021373876
+      value: 0.0000000021373872
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00189c43b33d8c34683e333e3fcfb507, type: 3}
@@ -16969,10 +16969,10 @@ MonoBehaviour:
   capacity: 30
   width: 35
   mikuniInstances:
-  - {fileID: 6659450678103716949, guid: 063ce90a5297fd34a89bcb7304d49774, type: 3}
+  - {fileID: 510828380789937283, guid: fe2b95b62ae152f4696f49bf9575b28c, type: 3}
   burstMode: 1
   spawnTimer: 5
-  batchCount: 300
+  batchCount: 5
 --- !u!4 &1505237574
 Transform:
   m_ObjectHideFlags: 0
@@ -17101,7 +17101,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.14220116, y: -0.0000000030900242, z: -4.4395823e-10, w: 0.98983777}
+  m_LocalRotation: {x: 0.14220116, y: 0.0000000030900242, z: 4.4395787e-10, w: 0.98983777}
   m_LocalPosition: {x: -2.24, y: 4.96, z: -47.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

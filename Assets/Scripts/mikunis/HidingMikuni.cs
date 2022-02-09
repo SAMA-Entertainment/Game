@@ -33,8 +33,8 @@ namespace mikunis
             if (!_hiding) return;
             if (animator != null)
             {
-                animator.SetBool("IsHiding", false);
                 animator.SetBool("IsRunning", true);
+                animator.SetBool("IsHiding", false);
             }
             _hiding = false;
             body.transform.position += bodyStartOffset * Vector3.up;
@@ -46,8 +46,8 @@ namespace mikunis
             if (_hiding) return;
             if (animator != null)
             {
-                animator.SetBool("IsHiding", true);
                 animator.SetBool("IsRunning", false);
+                animator.SetBool("IsHiding", true);
             }
             _hiding = true;
             body.transform.position += bodyStartOffset * Vector3.down;
