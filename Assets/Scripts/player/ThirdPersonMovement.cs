@@ -12,19 +12,18 @@ public class ThirdPersonMovement : MonoBehaviour
     public Animator animator;
     public float speed = 6f;
     public float stamina = 10;
-    public floa
-
-=======
->>>>>>> aurelat jumpHeight = 1.0f;
+    public float maxstamina = 10;
+    public bool isRunning;
+    public float gravitymultiplier= -9.81f;
+    public float jumpHeight = 1.0f;
     public float turnSmoothTime = 0.1f;
     private float _turnSmoothVelocity;
     
     void Update()
-    { 
-        Shader.SetGlobalVector("_PositionMoving", transform.position);
+    {
         // Get Input From the player
-        float horizontal = Input.GetAx
-   float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
         Vector3 dir = new Vector3(horizontal, 0f, vertical).normalized; 
         // Normalize the vector so the speed is constant
         // Here you can modify the speed (sprint)
@@ -32,15 +31,15 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector3 moveVector = Vector3.zero;
         if(Input.GetButton("Jump") && controller.isGrounded)
         {
-        // Normalize the vector so the speed is constant
-        // Here you can modify the speed (sprint)
-        // Add gravity force
-        else if (controller.isGrounded == false)
-        { (Input.GetButton("Jump") && controller.isGrounded)
-        {
-            moveVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravitymultiplier);
+            moveVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravitymultiplier);
         }
-{
+       
+        else if (controller.isGrounded == false)
+        {
+            moveVector.y += gravitymultiplier * Time.deltaTime;
+        }
+        if (dir.magnitude >= 0.1f) // enough movement
+        {
             float speed = this.speed;
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
@@ -51,7 +50,7 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 isRunning = false;
             }
-                speed *= g)
+            if (isRunning)
             {
                 speed *=1.5f;
                 stamina -= Time.deltaTime;
@@ -59,7 +58,7 @@ public class ThirdPersonMovement : MonoBehaviour
                 {
                     stamina = 0;
                     isRunning = false;
-                } 
+                }
             }
             else if (stamina < maxstamina)
             {
@@ -74,11 +73,11 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         else
         {
-            animator.SetFloat("Speed", 0f);
             if (!isRunning && stamina < maxstamina)
             {
                 stamina += Time.deltaTime;
             }
+            animator.SetFloat("Speed", 0f);
             controller.Move(moveVector * Time.deltaTime);
         }
     }
@@ -89,7 +88,8 @@ public class ThirdPersonMovement : MonoBehaviour
      */
     void OnTriggerStay(Collider other)
     {
-        Mikuni mikuniController = other.gameObject.GetComponent<Mikuni>();
+        Mikuni mikuniController =
+            other.gameObject.GetComponent<Mikuni>();
         if (mikuniController != null)
         {
             // Debug.Log("Mikuni detected");
