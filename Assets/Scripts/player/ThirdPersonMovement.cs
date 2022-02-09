@@ -18,6 +18,7 @@ public class ThirdPersonMovement : MonoBehaviour
     
     void Update()
     {
+        Shader.SetGlobalVector("_PositionMoving", transform.position);
         // Get Input From the player
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
