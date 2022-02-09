@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28115103, g: 0.3665265, b: 0.4989184, a: 1}
+  m_IndirectSpecularColor: {r: 0.28115118, g: 0.36652672, b: 0.49891895, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16937,6 +16937,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 445266810}
   progressBar: {fileID: 1095025640}
+--- !u!1 &1505237572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1505237574}
+  - component: {fileID: 1505237573}
+  m_Layer: 0
+  m_Name: MikuniSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1505237573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505237572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccec15423a85a474886c50104e48a007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capacity: 30
+  width: 35
+  mikuniInstances:
+  - {fileID: 6659450678103716949, guid: 063ce90a5297fd34a89bcb7304d49774, type: 3}
+  burstMode: 1
+  spawnTimer: 5
+  batchCount: 300
+--- !u!4 &1505237574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505237572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -29.6, y: -0.37, z: -10.633141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1643551334
 GameObject:
   m_ObjectHideFlags: 0
