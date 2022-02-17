@@ -137,7 +137,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_1ac63583601b456b96dfe069d0f333e1: {r: 5.2164755, g: 0.7100961, b: 0, a: 0}
+    - Color_1ac63583601b456b96dfe069d0f333e1: {r: 5.992157, g: 0.8156863, b: 0, a: 0}
     - Color_8ad7e287d5d64b17a1f7fc162ccb5f2b: {r: 1, g: 0.9503594, b: 0.9198113, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
