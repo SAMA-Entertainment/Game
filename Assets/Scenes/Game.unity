@@ -33260,7 +33260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9059358526509905876, guid: 00189c43b33d8c34683e333e3fcfb507, type: 3}
       propertyPath: jumpHeight
-      value: 100
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 9059358526509905876, guid: 00189c43b33d8c34683e333e3fcfb507, type: 3}
       propertyPath: maxstamina
@@ -33273,6 +33273,10 @@ PrefabInstance:
     - target: {fileID: 9059358526509905876, guid: 00189c43b33d8c34683e333e3fcfb507, type: 3}
       propertyPath: verticalspeed
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059358526509905876, guid: 00189c43b33d8c34683e333e3fcfb507, type: 3}
+      propertyPath: jumpMultiplier
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9059358526509905877, guid: 00189c43b33d8c34683e333e3fcfb507, type: 3}
       propertyPath: m_RootOrder
@@ -34737,6 +34741,10 @@ PrefabInstance:
     - target: {fileID: 6581468115689192533, guid: 1ecc5c277e23a3c4489fd78da4ccd07f, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581468115689192533, guid: 1ecc5c277e23a3c4489fd78da4ccd07f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8191250582825115403, guid: 1ecc5c277e23a3c4489fd78da4ccd07f, type: 3}
       propertyPath: m_Layer

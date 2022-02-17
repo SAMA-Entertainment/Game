@@ -17,8 +17,17 @@ namespace mikunis
         private bool _hiding;
 
         // Update is called once per frame
-        void Update()
+        protected override void FixedUpdate()
         {
+            if (animator != null)
+            {
+                if(!animator.GetCurrentAnimatorStateInfo(0).loop){
+                    agent.velocity = Vector3.zero;
+                    return;
+                }
+                animator.SetBool("IsRunning", State == STATE_FLEEING);
+            }
+            
             if (_hiding && State == STATE_FLEEING)
             {
                 ShowBodyParts();
@@ -33,7 +42,6 @@ namespace mikunis
             if (!_hiding) return;
             if (animator != null)
             {
-                animator.SetBool("IsRunning", true);
                 animator.SetBool("IsHiding", false);
             }
             _hiding = false;
@@ -46,7 +54,6 @@ namespace mikunis
             if (_hiding) return;
             if (animator != null)
             {
-                animator.SetBool("IsRunning", false);
                 animator.SetBool("IsHiding", true);
             }
             _hiding = true;
