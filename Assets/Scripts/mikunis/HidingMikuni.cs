@@ -19,13 +19,14 @@ namespace mikunis
         // Update is called once per frame
         protected override void FixedUpdate()
         {
+            base.FixedUpdate();
             if (animator != null)
             {
-                if(!animator.GetCurrentAnimatorStateInfo(0).loop){
+                animator.SetBool("IsRunning", State == STATE_FLEEING);
+                if(animator.IsInTransition(0)){
                     agent.velocity = Vector3.zero;
                     return;
                 }
-                animator.SetBool("IsRunning", State == STATE_FLEEING);
             }
             
             if (_hiding && State == STATE_FLEEING)

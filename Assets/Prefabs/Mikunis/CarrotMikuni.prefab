@@ -102,6 +102,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5166862960473778668}
   spottedParticle: {fileID: 8695709016762270042}
+  eyes: {fileID: 5066961114877693298}
+  normalEyes: {fileID: 2800000, guid: fc067f929ed89a34eada791e048b474c, type: 3}
+  scaredEyes: {fileID: 2800000, guid: 066d4beb7541db24abee77fd78bd85db, type: 3}
+  capturedEyes: {fileID: 2800000, guid: 89677faddcfa67b4a9a4afe947e630ea, type: 3}
   bodyStartOffset: 0
   body: {fileID: 8463511395046773675}
   animator: {fileID: 2563746729388542417}
@@ -270,5 +274,10 @@ Transform:
 --- !u!95 &2563746729388542417 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: cf2fcdea28f187a4484d3bce66e23fe5, type: 3}
+  m_PrefabInstance: {fileID: 8286297553180734528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5066961114877693298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5426940967627900622, guid: cf2fcdea28f187a4484d3bce66e23fe5, type: 3}
   m_PrefabInstance: {fileID: 8286297553180734528}
   m_PrefabAsset: {fileID: 0}

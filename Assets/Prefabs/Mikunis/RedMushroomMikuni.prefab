@@ -102,6 +102,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 6811781927427471784}
   spottedParticle: {fileID: 7906583025393161762}
+  eyes: {fileID: 6433610106227096133}
+  normalEyes: {fileID: 2800000, guid: fc067f929ed89a34eada791e048b474c, type: 3}
+  scaredEyes: {fileID: 2800000, guid: 066d4beb7541db24abee77fd78bd85db, type: 3}
+  capturedEyes: {fileID: 2800000, guid: 89677faddcfa67b4a9a4afe947e630ea, type: 3}
   bodyStartOffset: 0.0575
   body: {fileID: 2909266755241748158}
   animator: {fileID: 0}
