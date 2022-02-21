@@ -322,7 +322,7 @@ PrefabInstance:
     - target: {fileID: 2243416560468784374, guid: bdf9ae18cc762e044a765f9c26e50755, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 959286741}
+      objectReference: {fileID: 0}
     - target: {fileID: 2243416560468784374, guid: bdf9ae18cc762e044a765f9c26e50755, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitGame
@@ -654,7 +654,6 @@ GameObject:
   - component: {fileID: 621572601}
   - component: {fileID: 621572600}
   - component: {fileID: 621572599}
-  - component: {fileID: 621572602}
   m_Layer: 5
   m_Name: PlayMenu
   m_TagString: Untagged
@@ -744,18 +743,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &621572602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621572597}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d13562a803b634c43b46adc44a9d2b3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &661524605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1344,7 +1331,6 @@ GameObject:
   - component: {fileID: 959286739}
   - component: {fileID: 959286738}
   - component: {fileID: 959286737}
-  - component: {fileID: 959286741}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1433,22 +1419,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &959286741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959286736}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5794e4f12ead34948a6cede6052a51d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1081927544}
-  canvasGroupObject: {fileID: 914738513}
-  playGroupObject: {fileID: 1651382781}
-  mainMenu: {fileID: 940345252}
 --- !u!1 &1003593876
 GameObject:
   m_ObjectHideFlags: 0
