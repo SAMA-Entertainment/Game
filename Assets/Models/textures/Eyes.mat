@@ -66,7 +66,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EyesTexture:
-        m_Texture: {fileID: 2800000, guid: 89677faddcfa67b4a9a4afe947e630ea, type: 3}
+        m_Texture: {fileID: 2800000, guid: fc067f929ed89a34eada791e048b474c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -110,7 +110,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Boolean_8f9e16518fd14636b6dcbcc51f1861f7: 1
+    - Boolean_8f9e16518fd14636b6dcbcc51f1861f7: 0
     - Vector1_bd6ab93a12bb422b89367878c9e1f421: 0.12
     - _AlphaClip: 0
     - _Blend: 0
