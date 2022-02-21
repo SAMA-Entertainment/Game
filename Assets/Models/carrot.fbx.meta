@@ -4,31 +4,32 @@ ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
+      74: 1809189755708902092
+    second: Drilling
+  - first:
+      74: 1732453632451147095
+    second: Eject
+  - first:
+      74: -9121621101649706817
+    second: Running
+  - first:
       74: 8168845892587062415
     second: Carrot|Drilling
+  - first:
+      74: 7574226412348148156
+    second: Carrot|Eject
   - first:
       74: 1872613335407083332
     second: Carrot|Idle
   - first:
-      74: 8687744223772066940
-    second: Carrot|Idle.001
-  - first:
       74: 8872822943364319652
     second: Carrot|Running
-  - first:
-      74: -5703959452930196333
-    second: Carrot|RunningAnimation
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CarrotEye
-    second: {fileID: 2100000, guid: 7c62ab7e733601447af0b39700f8b833, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: CarrotLeaves
-    second: {fileID: 2100000, guid: d93364a2ed541a843b4b88e21ccdae7b, type: 2}
+    second: {fileID: 2100000, guid: a56745cfa91fda24ca22e9222266661d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -39,6 +40,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: CarrotMat
     second: {fileID: 2100000, guid: a56745cfa91fda24ca22e9222266661d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyes
+    second: {fileID: 2100000, guid: 2f62b4ff5347bb041bf457a93ee75e48, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -58,7 +64,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -67,8 +73,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Carrot|Drilling
-      takeName: Carrot|Drilling
+      name: Drilling
+      takeName: Drilling
       internalID: 0
       firstFrame: 0
       lastFrame: 40
@@ -96,18 +102,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Carrot|Idle
-      takeName: Carrot|Idle
+      name: Eject
+      takeName: Eject
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -125,8 +131,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Carrot|Running
-      takeName: Carrot|Running
+      name: Running
+      takeName: Running
       internalID: 0
       firstFrame: 0
       lastFrame: 25
@@ -210,7 +216,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: Bone
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1

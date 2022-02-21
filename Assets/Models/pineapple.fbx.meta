@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cef609edbbc200c41813d083da24f97d
+guid: ec05a11fb59d9074e8c6620df061c894
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -12,18 +12,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: RedCapMat
-    second: {fileID: 2100000, guid: d9d5eb8ccf74dc44b88bfe63df86e794, type: 2}
+      name: Leaves
+    second: {fileID: 2100000, guid: 9d0e21cf20999544780e7dc58cadc26f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: RedMushroomDots
-    second: {fileID: 2100000, guid: e415cf454f7e004439e447b81329c840, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: StemMat
-    second: {fileID: 2100000, guid: 6aedb618ef2298646a3d2cdbbad0440c, type: 2}
+      name: Pineapple
+    second: {fileID: 2100000, guid: abfd9f86b3f3ccf418b3ddc3c3038bc7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

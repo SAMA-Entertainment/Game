@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using mikunis;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -14,10 +13,13 @@ public class ThirdPersonMovement : MonoBehaviour
     public float stamina = 10;
     public float maxstamina = 10;
     public bool isRunning;
-    public float gravitymultiplier= -9.81f;
-    public float jumpHeight = 1.0f;
+    public float jumpHeight = 1f;
+    public float jumpMultiplier = 2f;
     public float turnSmoothTime = 0.1f;
     private float _turnSmoothVelocity;
+
+    private bool jumping;
+    private float _stamina = 10;
     
     void Update()
     {
@@ -29,41 +31,38 @@ public class ThirdPersonMovement : MonoBehaviour
         // Here you can modify the speed (sprint)
         // Add gravity force
         Vector3 moveVector = Vector3.zero;
-        if(Input.GetButton("Jump") && controller.isGrounded)
+        if (controller.isGrounded)
         {
-            moveVector.y += Mathf.Sqrt(jumpHeight * -3.0f * gravitymultiplier);
+            jumping = Input.GetButton("Jump") && !jumping;
         }
-       
-        else if (controller.isGrounded == false)
+
+        if (transform.position.y > jumpHeight)
         {
-            moveVector.y += gravitymultiplier * Time.deltaTime;
+            jumping = false;
+        } 
+        else if(jumping)
+        {
+            moveVector = jumpHeight * jumpMultiplier * Vector3.up - Physics.gravity;
         }
+        
+        if (!controller.isGrounded)
+            moveVector += Physics.gravity;
+
         if (dir.magnitude >= 0.1f) // enough movement
         {
             float speed = this.speed;
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                isRunning = true; 
-                speed *=1.5f;
-            }
-            else if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                isRunning = false;
-            }
+            isRunning = Input.GetKey(KeyCode.LeftShift);
             if (isRunning)
             {
-                speed *=1.5f;
-                stamina -= Time.deltaTime;
-                if (stamina < 0)
+                _stamina -= Time.deltaTime;
+                speed *= 1.5f;
+                if (_stamina < 0)
                 {
-                    stamina = 0;
+                    _stamina = 0;
                     isRunning = false;
                 }
             }
-            else if (stamina < maxstamina)
-            {
-                stamina += Time.deltaTime;
-            }
+            
             float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -73,12 +72,13 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         else
         {
-            if (!isRunning && stamina < maxstamina)
-            {
-                stamina += Time.deltaTime;
-            }
             animator.SetFloat("Speed", 0f);
             controller.Move(moveVector * Time.deltaTime);
+        }
+        
+        if (!isRunning && _stamina < maxstamina)
+        {
+            _stamina += Time.deltaTime;
         }
     }
 

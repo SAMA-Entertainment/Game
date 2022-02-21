@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Soup
-  m_Shader: {fileID: -6465566751694194690, guid: 008e55b7b9a71c74e859afb2e251123a, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: aff32bbf842f94546abde75986df9cf3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,6 +32,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_9a84145bcc28459998b57a7b69ef51d9:
+        m_Texture: {fileID: 2800000, guid: e2c86c2d623b8e949b4417d65acb3261, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -72,6 +76,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3d3a90981b1d45bc8e4d997d64ccb6f4_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d996471f59b56d447922314c121852b7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_4f70a2efcbdd4bba9696a348a0177343_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d996471f59b56d447922314c121852b7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -90,12 +102,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_0e0af52a7f504073b730c50ea3ed6255: 5.72
+    - Vector1_17bcbd02143d4c65b83d4d53066c1f6d: 0.6
     - Vector1_2414113877644bc39365f9fa4bd93373: 1
     - Vector1_44af999cf94349448a7b97409173e27a: 4.04
     - Vector1_49bee7512f224d7b8bdf689fdf27f409: 1.01
     - Vector1_51d5d011aa4e4728a8cfa8b604031a60: 20
+    - Vector1_64463ecc68fe40dab2a0946fbfa052ad: 0.2
     - Vector1_69763bec14b045f9932f5de678a0f140: 2.44
     - Vector1_8ea245a99a574fddaf11f248433723fd: 0.5
+    - Vector1_eeaf89b69d144c0eba18d11618368c23: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -127,6 +142,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_1ac63583601b456b96dfe069d0f333e1: {r: 0.21960784, g: 0, b: 5.992157, a: 0}
     - Color_8ad7e287d5d64b17a1f7fc162ccb5f2b: {r: 1, g: 0.9503594, b: 0.9198113, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

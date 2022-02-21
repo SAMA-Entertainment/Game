@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Eyes
+    second: {fileID: 2100000, guid: 2f62b4ff5347bb041bf457a93ee75e48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: StemMat
     second: {fileID: 2100000, guid: 6aedb618ef2298646a3d2cdbbad0440c, type: 2}
   materials:
