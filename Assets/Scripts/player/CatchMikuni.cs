@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using mikunis;
+using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -9,6 +10,7 @@ public class CatchMikuni : MonoBehaviour
 {
     private bool iscatching;
     private List<Mikuni> mikuniscatched = new List<Mikuni>();
+    public GameObject mikuniCounterObject;
 
     //public Dictionary<string, int> catchedMikuni = new Dictionary<string, int>(); 
     // Start is called before the first frame update
@@ -39,5 +41,10 @@ public class CatchMikuni : MonoBehaviour
             iscatching = false;
         }
         
+    }
+
+    private void LateUpdate()
+    {
+        mikuniCounterObject.GetComponent<TextMeshProUGUI>().text = $"Mikunis: {mikuniscatched.Count}";
     }
 }
