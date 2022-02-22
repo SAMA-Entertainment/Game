@@ -10,7 +10,6 @@ public class ThirdPersonMovement : MonoBehaviour
     public Transform cam;
     public Animator animator;
     public float speed = 6f;
-    public float stamina = 10;
     public float maxstamina = 10;
     public bool isRunning;
     public float jumpHeight = 1f;
@@ -18,6 +17,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     private float _turnSmoothVelocity;
 
+    public float Stamina => _stamina;
     private bool jumping;
     private float _stamina = 10;
     

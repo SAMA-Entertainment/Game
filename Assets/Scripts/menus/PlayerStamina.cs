@@ -8,6 +8,7 @@ public class PlayerStamina : MonoBehaviour
 {
     public ThirdPersonMovement movement;
     public Slider progressBar;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,8 @@ public class PlayerStamina : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float ratio=movement.stamina / movement.maxstamina;
+        float ratio = movement.Stamina / movement.maxstamina;
         progressBar.value = ratio;
     }
+    
 }
