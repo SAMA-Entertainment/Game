@@ -1,3 +1,4 @@
+#if (UNITY_EDITOR)
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -80,3 +81,8 @@ public class GrassPainterEditor : Editor
     }
 
 }
+#else
+public class GrassPainterEditor
+{
+}
+#endif
