@@ -18,6 +18,8 @@ namespace menus
 
         public GameObject loadingGroupObject;
 
+        public GameObject settingsGroupObject;
+
         public GameObject cauldronObject;
 
         private Vector3 _cauldronTitlePos = new Vector3(0, 111.6f, 80);
@@ -33,6 +35,7 @@ namespace menus
         private AsyncOperation _sceneLoading;
 
         private bool _playMenu;
+        private bool _settingsMenu;
         private float _camProgression = 0;
         private float _titleAlphaProgression = 0;
         private float _playAlphaProgression = 0;
@@ -72,58 +75,13 @@ namespace menus
 
         public void FixedUpdate()
         {
-            if (_playMenu)
-            {
-                _titleCanvasGroup.interactable = false;
-                playGroupObject.SetActive(true);
-                if (_camProgression <= 1)
-                    _camProgression += 0.01f;
-                else
-                {
-                    titleGroupObject.SetActive(false);
-                    _playCanvasGroup.interactable = true;
-                }
+            UpdatePlay();
 
-                if (_playAlphaProgression < 1)
-                    _playAlphaProgression += 0.01f;
+            UpdateTitle();
 
-                if (_titleAlphaProgression < 1)
-                    _titleAlphaProgression += 0.05f;
-            }
-            else
-            {
-                _playCanvasGroup.interactable = false;
-                if (_camProgression > 0)
-                    _camProgression -= 0.01f;
-                else
-                {
-                    playGroupObject.SetActive(false);
-                    titleGroupObject.SetActive(true);
-                    _titleCanvasGroup.interactable = true;
-                    if (_titleAlphaProgression > 0)
-                        _titleAlphaProgression -= 0.05f;
-                }
+            UpdateLoadingScreen();
 
-                if (_playAlphaProgression > 0)
-                    _playAlphaProgression -= 0.01f;
-            }
-
-            if (_sceneLoading != null)
-            {
-                loadingGroupObject.SetActive(true);
-                if (_loadingScreenAlphaProgression < 1)
-                    _loadingScreenAlphaProgression += 0.1f;
-
-                loadingGroupObject.GetComponentInChildren<TextMeshProUGUI>().text =
-                    $"Chargement...\n{Math.Ceiling(_sceneLoading.progress / 0.9):P}";
-            }
-            else
-            {
-                if (_loadingScreenAlphaProgression > 0)
-                    _loadingScreenAlphaProgression -= 0.1f;
-                else
-                    loadingGroupObject.SetActive(false);
-            }
+            UpdateSettings();
 
             _cauldronTitleRot =
                 Quaternion.LookRotation(cauldronObject.transform.position - mainCamera.transform.position);
@@ -145,9 +103,102 @@ namespace menus
             }
         }
 
+        private void UpdateTitle()
+        {
+            _titleCanvasGroup.interactable = !(_playMenu || _settingsMenu);
+            if (_playMenu)
+            {
+                if (_camProgression > 1)
+                    titleGroupObject.SetActive(false);
+                if (_titleAlphaProgression < 1)
+                    _titleAlphaProgression += 0.05f;
+            }
+            else
+            {
+                if (_camProgression <= 0)
+                {
+                    titleGroupObject.SetActive(true);
+                    if (_titleAlphaProgression > 0)
+                        _titleAlphaProgression -= 0.05f;
+                }
+            }
+
+            titleGroupObject.SetActive(!_settingsMenu);
+        }
+
+
+        private void UpdatePlay()
+        {
+            if (_playMenu)
+            {
+                playGroupObject.SetActive(true);
+                if (_camProgression <= 1)
+                    _camProgression += 0.01f;
+                else
+                {
+                    _playCanvasGroup.interactable = true;
+                }
+
+                if (_playAlphaProgression < 1)
+                    _playAlphaProgression += 0.01f;
+
+            }
+            else
+            {
+                _playCanvasGroup.interactable = false;
+                if (_camProgression > 0)
+                    _camProgression -= 0.01f;
+                else
+                {
+                    playGroupObject.SetActive(false);
+                }
+
+                if (_playAlphaProgression > 0)
+                    _playAlphaProgression -= 0.01f;
+            }
+        }
+
+        private void UpdateSettings()
+        {
+            settingsGroupObject.SetActive(_settingsMenu);
+        }
+
+        private void UpdateLoadingScreen()
+        {
+            if (_sceneLoading != null)
+            {
+                loadingGroupObject.SetActive(true);
+                if (_loadingScreenAlphaProgression < 1)
+                    _loadingScreenAlphaProgression += 0.1f;
+
+                loadingGroupObject.GetComponentInChildren<TextMeshProUGUI>().text =
+                    $"Chargement...\n{Math.Ceiling(_sceneLoading.progress / 0.9):P}";
+            }
+            else
+            {
+                if (_loadingScreenAlphaProgression > 0)
+                    _loadingScreenAlphaProgression -= 0.1f;
+                else
+                    loadingGroupObject.SetActive(false);
+            }
+        }
+
+        public void OpenSettings()
+        {
+            _settingsMenu = true;
+        }
+
+        public void CloseSettings()
+        {
+            _settingsMenu = false;
+        }
+
         public void QuitGame()
         {
             Debug.Log("=> Quit");
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
             Application.Quit();
         }
 
