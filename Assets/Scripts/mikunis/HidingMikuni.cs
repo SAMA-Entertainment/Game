@@ -7,7 +7,6 @@ namespace mikunis
 {
     public class HidingMikuni : Mikuni
     {
-
         public float bodyStartOffset;
         public Transform body;
         public Animator animator;
