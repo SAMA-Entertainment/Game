@@ -1,5 +1,4 @@
 using System.IO;
-using Cinemachine;
 using Photon.Pun;
 using UnityEngine;
 
@@ -17,7 +16,7 @@ namespace network.controllers
             {
                 int spawnPointIdx = Random.Range(0, GameSetup.Instance.spawnPoints.Length);
                 Transform spawnPoint = GameSetup.Instance.spawnPoints[spawnPointIdx];
-                _avatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CurrentPlayerAvatar"), 
+                _avatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar"), 
                     spawnPoint.position, spawnPoint.rotation, 0);
             }
         }
