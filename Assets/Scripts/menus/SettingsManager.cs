@@ -16,11 +16,12 @@ namespace menus
         // Start is called before the first frame update
         void Start()
         {
+            Application.targetFrameRate = 75; // TODO
             _resolutions = Screen.resolutions;
-            foreach (Resolution resolution in _resolutions)
+            /*foreach (Resolution resolution in _resolutions)
             {
                 Debug.Log(resolution);
-            }
+            }*/
             _textDisplay = resolutionDisplay.GetComponent<TextMeshProUGUI>();
             Resolution prefResolution = GetPreferredResolutionOrDefault();
             _resolutionIndex = BinarySearchIndexOf(prefResolution, _resolutions);
