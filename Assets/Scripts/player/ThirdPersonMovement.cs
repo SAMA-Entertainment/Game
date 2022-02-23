@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using mikunis;
+using Photon.Pun;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -17,12 +20,24 @@ public class ThirdPersonMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     private float _turnSmoothVelocity;
 
+    private PhotonView _view;
     public float Stamina => _stamina;
     private bool jumping;
     private float _stamina = 10;
     
+    private void Start()
+    {
+        _view = GetComponent<PhotonView>();
+        if (_view != null)
+        {
+            FindObjectOfType<CinemachineFreeLook>().enabled = _view.IsMine;
+        }
+    }
+
     void Update()
     {
+        if (_view != null && !_view.IsMine) return;
+        if (cam == null) return;
         // Get Input From the player
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");

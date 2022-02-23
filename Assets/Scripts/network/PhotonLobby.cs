@@ -31,6 +31,7 @@ namespace network
         public override void OnConnectedToMaster()
         {
             Debug.Log("Successfully connected to master");
+            PhotonNetwork.AutomaticallySyncScene = true;
             _joinButtonHandle.interactable = true;
         }
 
@@ -64,11 +65,6 @@ namespace network
         {
             Debug.Log("Joining random room...");
             JoinRandomRoom();
-        }
-
-        public override void OnJoinedRoom()
-        {
-            Debug.Log("Succesfully connected to Room<" + PhotonNetwork.CurrentRoom.Name + ">");
         }
 
         public void JoinRandomRoom()
