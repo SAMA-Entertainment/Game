@@ -30,7 +30,7 @@ namespace player
             if (_view != null)
             {
                 FindObjectOfType<CinemachineFreeLook>().enabled = _view.IsMine;
-                PlayerStamina.Stamina.movement = this;
+                if(_view.IsMine) PlayerStamina.Stamina.movement = this;
             }
         }
 

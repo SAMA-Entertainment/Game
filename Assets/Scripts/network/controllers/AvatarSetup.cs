@@ -1,5 +1,5 @@
-﻿using System;
-using Photon.Pun;
+﻿using Photon.Pun;
+using player;
 using UnityEngine;
 
 namespace network.controllers
@@ -25,6 +25,9 @@ namespace network.controllers
             playerSkin = whichCharacter;
             Transform tr = transform;
             avatar = Instantiate(PlayerInfo.PInfo.allCharacters[whichCharacter], tr.position, tr.rotation, tr);
+            ThirdPersonMovement mvt = avatar.GetComponentInParent<ThirdPersonMovement>();
+            mvt.cam = Camera.main.transform;
+            mvt.animator = avatar.GetComponentInChildren<Animator>();
         }
     }
 }
