@@ -33220,7 +33220,6 @@ MonoBehaviour:
   - {fileID: 1732311318}
   - {fileID: 1200099230}
   - {fileID: 558964985}
-  mainCamera: {fileID: 1687258584}
 --- !u!4 &1096540816
 Transform:
   m_ObjectHideFlags: 0
@@ -33484,10 +33483,13 @@ MonoBehaviour:
   capacity: 30
   width: 35
   mikuniInstances:
-  - {fileID: 510828380789937283, guid: fe2b95b62ae152f4696f49bf9575b28c, type: 3}
+  - {fileID: 1931751193413182749, guid: c20076c88c9478649914160c6281c8f9, type: 3}
+  - {fileID: 6659450678103716949, guid: 063ce90a5297fd34a89bcb7304d49774, type: 3}
+  - {fileID: 7610713711108038008, guid: 7497d47bb760dee4283f732035a7e3c3, type: 3}
+  - {fileID: 775735668692349841, guid: fc0b6065ef86fe8498c2e70f8fe3ccc3, type: 3}
   burstMode: 1
   spawnTimer: 5
-  batchCount: 5
+  batchCount: 10
 --- !u!4 &1505237574
 Transform:
   m_ObjectHideFlags: 0
