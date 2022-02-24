@@ -1,4 +1,3 @@
-using Cinemachine;
 using menus;
 using mikunis;
 using Photon.Pun;
@@ -64,11 +63,11 @@ namespace player
             if (!controller.isGrounded)
                 moveVector += Physics.gravity;
 
+            isRunning = Input.GetKey(KeyCode.LeftShift);
             if (dir.magnitude >= 0.1f) // enough movement
             {
                 float speed = this.speed;
-                isRunning = Input.GetKey(KeyCode.LeftShift);
-                if (isRunning)
+                if (isRunning && _stamina > 0.15)
                 {
                     _stamina -= Time.deltaTime;
                     speed *= 1.5f;
