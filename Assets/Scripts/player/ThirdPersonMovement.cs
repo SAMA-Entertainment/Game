@@ -2,6 +2,7 @@ using Cinemachine;
 using menus;
 using mikunis;
 using Photon.Pun;
+using tools;
 using UnityEngine;
 
 namespace player
@@ -29,7 +30,7 @@ namespace player
             _view = GetComponent<PhotonView>();
             if (_view != null)
             {
-                FindObjectOfType<CinemachineFreeLook>().enabled = _view.IsMine;
+                TransformHelper.FindComponentInChildWithTag(this.gameObject, "MainCamera").SetActive(_view.IsMine); 
                 if(_view.IsMine) PlayerHUD.HUD.movement = this;
             }
         }
