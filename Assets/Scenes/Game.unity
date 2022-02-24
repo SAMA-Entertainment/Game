@@ -33409,7 +33409,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1323762150}
-  - component: {fileID: 1323762151}
   m_Layer: 5
   m_Name: Stamina
   m_TagString: Untagged
@@ -33437,20 +33436,6 @@ RectTransform:
   m_AnchoredPosition: {x: 115, y: 21}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1323762151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323762149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4249eb31a7eb6ea449a452d865e91f15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {fileID: 0}
-  progressBar: {fileID: 1095025640}
 --- !u!1 &1505237572
 GameObject:
   m_ObjectHideFlags: 0
@@ -34032,6 +34017,7 @@ GameObject:
   - component: {fileID: 1940237333}
   - component: {fileID: 1940237332}
   - component: {fileID: 1940237331}
+  - component: {fileID: 1940237335}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -34121,6 +34107,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1940237335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940237330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4249eb31a7eb6ea449a452d865e91f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  mikuniCatchController: {fileID: 0}
+  progressBar: {fileID: 1095025640}
+  mikuniCounterObject: {fileID: 1564759941}
 --- !u!1 &2016548988
 GameObject:
   m_ObjectHideFlags: 0

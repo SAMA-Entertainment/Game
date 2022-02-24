@@ -1,50 +1,47 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using menus;
 using mikunis;
-using TMPro;
+using Photon.Pun;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
-public class CatchMikuni : MonoBehaviour
+namespace player
 {
-    private bool iscatching;
-    private List<Mikuni> mikuniscatched = new List<Mikuni>();
-    public GameObject mikuniCounterObject;
-
-    //public Dictionary<string, int> catchedMikuni = new Dictionary<string, int>(); 
-    // Start is called before the first frame update
-    void Start()
+    public class CatchMikuni : MonoBehaviour
     {
-        /*
-        catchedMikuni.Add("coconut",0);
-        catchedMikuni.Add("carrot", 0);
-        catchedMikuni.Add("brown_mushroom",0);
-        catchedMikuni.Add("red_mushroom",0);
-        */
-        iscatching = false;
-    }
+        private PhotonView _view;
+        private bool _isCatching;
+        private List<Mikuni> _caughtMikunis;
+    
+        public int MikuniCatched => _caughtMikunis.Count;
 
-    void OnTriggerStay(Collider other)
-    {
-        if (!other.gameObject.CompareTag("Mikuni")) return;
-        Debug.Log("Mikuni");
-        if (Input.GetKeyDown(KeyCode.P) && !iscatching)
+        void Start()
         {
-            Mikuni mikunicatch = other.gameObject.GetComponent<Mikuni>();
-            mikuniscatched.Add(mikunicatch);
-            Destroy(other.gameObject);
-            iscatching = true;
+            _isCatching = false;
+            _caughtMikunis = new List<Mikuni>();
+            _view = GetComponentInParent<PhotonView>();
+            this.enabled = _view.IsMine;
+            if (_view.IsMine)
+            {
+                PlayerHUD.HUD.mikuniCatchController = this;
+            }
         }
-        else
+
+        void OnTriggerStay(Collider other)
         {
-            iscatching = false;
-        }
+            if (!other.gameObject.CompareTag("Mikuni")) return;
+            if (Input.GetKeyDown(KeyCode.P) && !_isCatching)
+            {
+                Mikuni target = other.gameObject.GetComponent<Mikuni>();
+                _caughtMikunis.Add(target);
+                //Destroy(other.gameObject);
+                PhotonNetwork.Destroy(other.gameObject);
+                _isCatching = true;
+            }
+            else
+            {
+                _isCatching = false;
+            }
         
-    }
-
-    private void LateUpdate()
-    {
-        mikuniCounterObject.GetComponent<TextMeshProUGUI>().text = $"Mikunis: {mikuniscatched.Count}";
+        }
     }
 }

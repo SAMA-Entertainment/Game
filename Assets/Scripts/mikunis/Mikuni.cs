@@ -1,3 +1,4 @@
+using System;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
@@ -42,7 +43,12 @@ namespace mikunis
                 }
             }
         }
-    
+
+        private void OnDestroy()
+        {
+            _state = STATE_CAPTURED;
+        }
+
         /**
          * This function is called when this Mikuni should switch its current state to STATE_FLEEING and
          * start fleeing from the target

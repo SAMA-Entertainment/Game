@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6914511162059630211}
   - component: {fileID: 1010090133517779124}
   - component: {fileID: 1931751193413182749}
+  - component: {fileID: 2934163537024931557}
+  - component: {fileID: 2808415638013317198}
   m_Layer: 0
   m_Name: BrownMushroomMikuni
   m_TagString: Mikuni
@@ -113,6 +115,45 @@ MonoBehaviour:
   - {fileID: 4921179632472929965}
   - {fileID: 8869276227398427085}
   - {fileID: 5375897079065473134}
+--- !u!114 &2934163537024931557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084067859324432090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 2808415638013317198}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &2808415638013317198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084067859324432090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1001 &5778176949534218840
 PrefabInstance:
   m_ObjectHideFlags: 0
