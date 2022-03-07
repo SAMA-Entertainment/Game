@@ -8,6 +8,7 @@ namespace network.controllers
     {
         private PhotonView _view;
         public int playerSkin;
+        [HideInInspector] 
         public GameObject avatar;
 
         private void Start()

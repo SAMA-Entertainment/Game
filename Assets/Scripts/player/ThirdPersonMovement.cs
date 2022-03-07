@@ -1,7 +1,7 @@
-using Cinemachine;
 using menus;
 using mikunis;
 using Photon.Pun;
+using tools;
 using UnityEngine;
 
 namespace player
@@ -29,8 +29,8 @@ namespace player
             _view = GetComponent<PhotonView>();
             if (_view != null)
             {
-                FindObjectOfType<CinemachineFreeLook>().enabled = _view.IsMine;
-                if(_view.IsMine) PlayerStamina.Stamina.movement = this;
+                TransformHelper.FindComponentInChildWithTag(this.gameObject, "MainCamera").SetActive(_view.IsMine); 
+                if(_view.IsMine) PlayerHUD.HUD.movement = this;
             }
         }
 
@@ -63,11 +63,11 @@ namespace player
             if (!controller.isGrounded)
                 moveVector += Physics.gravity;
 
+            isRunning = Input.GetKey(KeyCode.LeftShift);
             if (dir.magnitude >= 0.1f) // enough movement
             {
                 float speed = this.speed;
-                isRunning = Input.GetKey(KeyCode.LeftShift);
-                if (isRunning)
+                if (isRunning && _stamina > 0.15)
                 {
                     _stamina -= Time.deltaTime;
                     speed *= 1.5f;

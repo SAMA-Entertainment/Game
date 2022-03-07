@@ -53,7 +53,7 @@ namespace network
 
         void CreateRoom()
         {
-            byte[] roomId = new byte[8];
+            byte[] roomId = new byte[16];
             _rd.NextBytes(roomId);
             string roomName = "mk:room:" + BitConverter.ToString(roomId).Replace("-", "").ToLower();
             RoomOptions opts = new RoomOptions() {IsVisible = true, IsOpen = true, MaxPlayers = 4};

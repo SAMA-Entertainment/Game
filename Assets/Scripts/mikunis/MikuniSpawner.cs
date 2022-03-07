@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -24,6 +24,19 @@ namespace mikunis
 
         void Start()
         {
+            DefaultPool pool = PhotonNetwork.PrefabPool as DefaultPool;
+            if (pool != null && mikuniInstances != null)
+            {
+                foreach (Mikuni prefab in mikuniInstances)
+                {
+                    pool.ResourceCache.Add(prefab.name, prefab.gameObject);
+                }
+            }    
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                this.enabled = false;
+                return;
+            }
             _spawnTimerState = spawnTimer;
             _spawning = false;
             if (burstMode)
@@ -79,7 +92,8 @@ namespace mikunis
                 position.x += Random.Range(-size, size+1);
                 position.z += Random.Range(-size, size+1);
                 yield return new WaitForSeconds(0.1f);
-                Instantiate(mikuniInstances[idx], position, quaternion.identity);
+                PhotonNetwork.Instantiate(mikuniInstances[idx].name, position,
+                    quaternion.identity);
             }
 
             _spawning = false;
