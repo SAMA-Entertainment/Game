@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6327175516911901995}
   - component: {fileID: 2804314971437827457}
   - component: {fileID: 4871647320185628952}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cauldron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,6 +73,10 @@ PrefabInstance:
     - target: {fileID: 2500748752918076197, guid: 5660fbdc1b93121439581084f50b8d08, type: 3}
       propertyPath: m_Name
       value: Bubbles
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500748752918076197, guid: 5660fbdc1b93121439581084f50b8d08, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2500748752918076198, guid: 5660fbdc1b93121439581084f50b8d08, type: 3}
       propertyPath: m_RootOrder
@@ -190,7 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8315695510981640877, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -772798723794940250, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
       propertyPath: m_CastShadows
@@ -206,11 +210,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2766212503428324877, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46c1e12af90d35940938981c54f379ea, type: 3}
