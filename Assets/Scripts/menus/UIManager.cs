@@ -202,6 +202,6 @@ namespace menus
             Application.Quit();
         }
 
-        private float EaseInOutSine(float x) => (float)((1 + Math.Cos(Math.PI * x)) / 2);
+        private float EaseInOutSine(float x) => (float)((1 - Math.Cos(Math.PI * x)) / 2);
     }
 }
