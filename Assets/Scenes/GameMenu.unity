@@ -15601,10 +15601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedSkin: 0
   allCharacters:
-  - {fileID: 2663766406682760620, guid: 3e6d2f3951e7165489f2504ccb74f93f, type: 3}
-  - {fileID: 2663766406682760620, guid: 29a0225cc888fe1428244dc103360549, type: 3}
-  - {fileID: 2663766406682760620, guid: da244b182e650bc45bfbd2c5a073f9df, type: 3}
-  - {fileID: 2663766406682760620, guid: 1b268246a4153e1419597e283b2294d2, type: 3}
+  - {fileID: 5310747947003129413, guid: 2756000ea6ad96f44b1cf6b155ee7c6f, type: 3}
 --- !u!4 &838742845
 Transform:
   m_ObjectHideFlags: 0
