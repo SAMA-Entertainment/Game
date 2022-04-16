@@ -78,6 +78,9 @@ namespace mikunis
         {
             _state = captured ? STATE_CAPTURED : STATE_IDLE;
             agent.enabled = !captured;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.isKinematic = captured;
+            rb.detectCollisions = !captured;
             if (eyes == null) return;
             Material material = eyes.GetComponent<Renderer>().material;
             material.SetTexture("_EyesTexture", scaredEyes);

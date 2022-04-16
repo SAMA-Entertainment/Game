@@ -12,7 +12,7 @@ namespace menus
         [HideInInspector]
         public ThirdPersonMovement movement;
         [HideInInspector] 
-        public CatchMikuni mikuniCatchController;
+        public MikuniBucket mikuniBucketController;
         
         public Slider progressBar;
         public GameObject mikuniCounterObject;
@@ -24,11 +24,11 @@ namespace menus
 
         void LateUpdate()
         {
-            if (movement == null || mikuniCatchController == null) return;
+            if (movement == null || mikuniBucketController == null) return;
             float ratio = movement.Stamina / movement.maxstamina;
             progressBar.value = ratio;
             mikuniCounterObject.GetComponent<TextMeshProUGUI>().text = 
-                $"Mikunis: {mikuniCatchController.MikuniCatched}";
+                $"Mikunis: {mikuniBucketController.MikuniCatched}";
         }
     
     }
