@@ -14,14 +14,11 @@ namespace player
         public float speed = 6f;
         public float maxstamina = 10;
         public bool isRunning;
-        public float jumpHeight = 1f;
-        public float jumpMultiplier = 2f;
         public float turnSmoothTime = 0.1f;
         private float _turnSmoothVelocity;
 
         private PhotonView _view;
         public float Stamina => _stamina;
-        private bool jumping;
         private float _stamina = 10;
     
         private void Start()
@@ -46,19 +43,6 @@ namespace player
             // Here you can modify the speed (sprint)
             // Add gravity force
             Vector3 moveVector = Vector3.zero;
-            if (controller.isGrounded)
-            {
-                jumping = Input.GetButton("Jump") && !jumping;
-            }
-
-            if (transform.position.y > jumpHeight)
-            {
-                jumping = false;
-            } 
-            else if(jumping)
-            {
-                moveVector = jumpHeight * jumpMultiplier * Vector3.up - Physics.gravity;
-            }
         
             if (!controller.isGrounded)
                 moveVector += Physics.gravity;
@@ -70,7 +54,7 @@ namespace player
                 if (isRunning && _stamina > 0.15)
                 {
                     _stamina -= Time.deltaTime;
-                    speed *= 1.5f;
+                    speed *= 1.8f;
                     if (_stamina < 0)
                     {
                         _stamina = 0;

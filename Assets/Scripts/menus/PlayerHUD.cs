@@ -19,7 +19,12 @@ namespace menus
         
         private void OnEnable()
         {
-            if (HUD == null) HUD = this;
+            if (HUD == null)
+            {
+                HUD = this;
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = false;
+            }
         }
 
         void LateUpdate()

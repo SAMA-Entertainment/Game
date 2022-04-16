@@ -73,7 +73,7 @@ namespace player
         void OnTriggerStay(Collider other)
         {
             if (!other.gameObject.CompareTag("Mikuni")) return;
-            if (Input.GetKeyDown(KeyCode.P) && !_isCatching && MikuniCatched < Capacity)
+            if (Input.GetMouseButtonDown(0) && !_isCatching && MikuniCatched < Capacity)
             {
                 Mikuni target = other.gameObject.GetComponent<Mikuni>();
                 _caughtMikunis.Add(target);
