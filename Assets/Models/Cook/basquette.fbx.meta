@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 481c88538b74fbc49872be69df69b0a2
+guid: 74d858a05c86c9e4a9cc3322ae1b9add
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,38 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BottomCloth
-    second: {fileID: 2100000, guid: 0e112755f53e2ee4d8dcf00422909372, type: 2}
+      name: BasketBadge
+    second: {fileID: 2100000, guid: aa6fb24c7674f314ca827c51cc6f9472, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: EyeMat
-    second: {fileID: 2100000, guid: f8fb81f6d6aaa344fbd6c6f114a63b0b, type: 2}
+      name: ToonStraps
+    second: {fileID: 2100000, guid: 63250706f6b873048914379d46183d15, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Eyebrows.001
-    second: {instanceID: 0}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.002
-    second: {fileID: 2100000, guid: 0db677bc31526994bb3c83e15aa2f48d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Skin
-    second: {fileID: 2100000, guid: 111bc5cb1548cfb4f8d27975686dd2bc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ToonCookHat
-    second: {fileID: 2100000, guid: fe8bb9ba770a1bd4a8f11b2c0a72ed66, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ToonMustache
-    second: {fileID: 2100000, guid: 85e5ea967c542fb4ba560cda8118584a, type: 2}
+      name: ToonWood
+    second: {fileID: 2100000, guid: c63480a16cac86c408a8c4bc463cf2f3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -108,7 +88,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -121,7 +101,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: Cook
+    rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
@@ -129,7 +109,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
