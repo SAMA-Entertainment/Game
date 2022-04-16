@@ -18,11 +18,21 @@ namespace player
             Rerender();
         }
 
-        public void HideMikuni(Mikuni mikuni)
+        public void ReleaseMikuni(Mikuni mikuni)
         {
             if(mikuni.State != Mikuni.STATE_CAPTURED) return;
             mikuni.transform.parent = null;
+            mikuni.gameObject.SetActive(true);
             mikuni.SetCaptured(false);
+            _mikunis.Remove(mikuni);
+            Rerender();
+        }
+
+        public void RemoveMikuni(Mikuni mikuni)
+        {
+            if(mikuni.State != Mikuni.STATE_CAPTURED) return;
+            mikuni.transform.parent = null;
+            mikuni.gameObject.SetActive(true);
             _mikunis.Remove(mikuni);
             Rerender();
         }
@@ -41,9 +51,19 @@ namespace player
                 else
                 {
                     Mikuni mikuni = _mikunis[i];
+                    mikuni.gameObject.SetActive(true);
                     var tr = mikuni.transform;
                     tr.parent = positions[i];
                     tr.localPosition = Vector3.zero;
+                }
+            }
+
+            if (_mikunis.Count > positions.Count)
+            {
+                for (int i = positions.Count; i < _mikunis.Count; i++)
+                {
+                    Mikuni mikuni = _mikunis[i];
+                    mikuni.gameObject.SetActive(false);
                 }
             }
         }
@@ -57,6 +77,7 @@ namespace player
                     Transform child = tr.GetChild(j);
                     child.parent = newParent;
                     Mikuni mikuni = child.GetComponent<Mikuni>();
+                    mikuni.gameObject.SetActive(true);
                     if (mikuni != null)
                     {
                         mikuni.SetCaptured(false);
@@ -64,6 +85,11 @@ namespace player
                 }
             }
 
+            _mikunis.Clear();
+        }
+
+        public void Destroy()
+        {
             _mikunis.Clear();
         }
     }

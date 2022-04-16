@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using gameplay;
 using menus;
 using mikunis;
 using Photon.Pun;
@@ -17,6 +18,7 @@ namespace player
         public readonly int Capacity = 5;
     
         public int MikuniCatched => _caughtMikunis.Count;
+        private GameObject _cauldron;
 
         void Start()
         {
@@ -37,7 +39,34 @@ namespace player
         {
             if (_view.IsMine && Input.GetKeyDown(KeyCode.R) && MikuniCatched > 0)
             {
-                ReleaseFirst();
+                if (_cauldron != null)
+                {
+                    bool success = _cauldron.GetComponent<MikuniBank>().Put(_view.Owner, _caughtMikunis);
+                    if (success)
+                    {
+                        _viewer.Destroy();
+                        _caughtMikunis.Clear();
+                        return;
+                    }
+                }
+                ReleaseOne();
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            GameObject go = other.gameObject;
+            if (go.CompareTag("Cauldron"))
+            {
+                _cauldron = go;
+            }
+        }
+        
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.CompareTag("Cauldron"))
+            {
+                _cauldron = null;
             }
         }
 
@@ -58,25 +87,36 @@ namespace player
         
         }
 
+        /**
+         * Release all caught Mikunis in the world
+         */
         public void ReleaseAll()
         {
             _viewer.Clear(null);
             _caughtMikunis.Clear();
         }
 
-        public void ReleaseFirst()
+        /**
+         * Release the first caught Mikuni in the world
+         */
+        public void ReleaseOne()
         {
             Mikuni mikuni = _caughtMikunis[0];
-            _viewer.HideMikuni(mikuni);
+            _viewer.ReleaseMikuni(mikuni);
             _caughtMikunis.Remove(mikuni);
         }
 
+        /**
+         * Destroys all caught Mikunis
+         */
         public void DestroyAll()
         {
             foreach (Mikuni mikuni in _caughtMikunis)
             {
                 PhotonNetwork.Destroy(mikuni.gameObject);
             }
+            _viewer.Destroy();
+            _caughtMikunis.Clear();
         }
     }
 }
