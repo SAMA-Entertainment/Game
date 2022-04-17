@@ -21,6 +21,7 @@ namespace player
         public float turnSmoothTime = 0.1f;
         private float _turnSmoothVelocity;
 
+        private int previousSpeed;
         private PhotonView _view;
         public float Stamina => _stamina;
         private float _stamina = 10;
@@ -65,6 +66,16 @@ namespace player
                         isRunning = false;
                     }
                 }
+
+                if (speed >= 10 && previousSpeed != 10)
+                {
+                    _view.RPC("RPC_SyncCharacterAnim", RpcTarget.Others, 10);
+                    previousSpeed = 10;
+                } else if (speed >= 6 && previousSpeed != 6)
+                {
+                    _view.RPC("RPC_SyncCharacterAnim", RpcTarget.Others, 6);
+                    previousSpeed = 6;
+                }
             
                 float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
@@ -76,7 +87,12 @@ namespace player
             else
             {
                 animator.SetFloat("Speed", 0f);
+                if (previousSpeed != 0f)
+                {
+                    _view.RPC("RPC_SyncCharacterAnim", RpcTarget.Others, 0);
+                }
                 controller.Move(moveVector * Time.deltaTime);
+                previousSpeed = 0;
             }
         
             if (!isRunning && _stamina < maxstamina)
@@ -98,6 +114,12 @@ namespace player
                 // Debug.Log("Mikuni detected");
                 mikuniController.PlayerNear(transform);
             }
+        }
+        
+        [PunRPC]
+        void RPC_SyncCharacterAnim(int speed)
+        {
+            animator.SetFloat("Speed", speed);
         }
     }
 }
