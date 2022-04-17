@@ -19,11 +19,13 @@ namespace player
     
         public int MikuniCatched => _caughtMikunis.Count;
         private GameObject _cauldron;
+        private PlayerController Controller;
 
         void Start()
         {
             _isCatching = false;
             _caughtMikunis = new List<Mikuni>();
+            Controller = GetComponentInParent<PlayerController>();
             _view = transform.parent.GetComponent<PhotonView>();
             this.gameObject.SetActive(_view.IsMine);
             if (_view.IsMine)
@@ -33,6 +35,7 @@ namespace player
             
             _viewer = transform.parent.GetComponentInChildren<MikuniViewer>();
             if (_viewer == null) throw new Exception("Missing MikuniViewer script in hierarchy");
+            transform.parent.GetComponentInChildren<AttackEvent>().OnAttack += AttackMikunis;
         }
         
         private void Update()
@@ -41,8 +44,7 @@ namespace player
             {
                 if (_cauldron != null)
                 {
-                    PlayerController controller = GetComponentInParent<PlayerController>();
-                    bool success = _cauldron.GetComponent<MikuniBank>().Put(controller.Player, _caughtMikunis);
+                    bool success = _cauldron.GetComponent<MikuniBank>().Put(Controller.Player, _caughtMikunis);
                     if (success)
                     {
                         _viewer.Destroy();
@@ -71,6 +73,12 @@ namespace player
             }
         }
 
+        public void AttackMikunis()
+        {
+            //Debug.Log("AttackMikunis()");
+            Controller.animator.SetBool("IsAttacking", false);
+        }
+
         void OnTriggerStay(Collider other)
         {
             GameObject obj = other.gameObject;
@@ -80,6 +88,7 @@ namespace player
                 Mikuni target = obj.GetComponent<Mikuni>();
                 if (obj.activeSelf && target.State != Mikuni.STATE_CAPTURED)
                 {
+                    Controller.animator.SetBool("IsAttacking", true);
                     _caughtMikunis.Add(target);
                     _viewer.DisplayMikuni(target, false);
                     _view.RPC("RPC_CaptureMikuni", RpcTarget.OthersBuffered, target._view.ViewID);
