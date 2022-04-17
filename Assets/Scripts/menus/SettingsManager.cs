@@ -16,6 +16,7 @@ namespace menus
         // Start is called before the first frame update
         void Start()
         {
+            QualitySettings.vSyncCount = 1;
             Application.targetFrameRate = 75; // TODO
             _resolutions = Screen.resolutions;
             /*foreach (Resolution resolution in _resolutions)

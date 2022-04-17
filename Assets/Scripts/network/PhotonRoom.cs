@@ -68,7 +68,7 @@ namespace network
             Debug.Log("Succesfully connected to Room<" + PhotonNetwork.CurrentRoom.Name + ">");
             _players = PhotonNetwork.PlayerList;
             PhotonNetwork.NickName = "Player" + _players.Length;
-            if(PlayerInfo.PInfo != null) PlayerInfo.PInfo.SetSelectedSkin(Math.Max(_players.Length - 1, 0)); // TODO: Change me
+            if(PlayerInfo.PInfo != null) PlayerInfo.PInfo.SetSelectedSkin(0); // TODO: Change me
             StartGame();
         }
 
