@@ -44,6 +44,7 @@ MonoBehaviour:
   - RPC_UpdateTeam
   - RPC_PushScore
   - RPC_UpdateScore
+  - RPC_SyncState
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

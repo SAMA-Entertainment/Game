@@ -32,6 +32,7 @@ namespace player
         {
             if(mikuni.State != Mikuni.STATE_CAPTURED) return;
             mikuni.transform.parent = null;
+            mikuni.transform.localScale = Vector3.one;
             mikuni.gameObject.SetActive(true);
             _mikunis.Remove(mikuni);
             Rerender();
@@ -54,6 +55,7 @@ namespace player
                     mikuni.gameObject.SetActive(true);
                     var tr = mikuni.transform;
                     tr.parent = positions[i];
+                    tr.localScale = Vector3.one * 0.005f;
                     tr.localPosition = Vector3.zero;
                 }
             }
