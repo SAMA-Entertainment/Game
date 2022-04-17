@@ -8,27 +8,35 @@ namespace network.controllers
     {
         private PhotonView _view;
         public int playerSkin;
+        public int playerUstencil;
         [HideInInspector] 
         public GameObject avatar;
+        [HideInInspector] 
+        public GameObject ustencil;
 
         private void Start()
         {
             _view = GetComponent<PhotonView>();
             if (_view.IsMine)
             {
-                _view.RPC("RPC_AddCharacter", RpcTarget.AllBuffered, PlayerInfo.PInfo.selectedSkin);
+                _view.RPC("RPC_AddCharacter", RpcTarget.AllBuffered, 
+                    PlayerInfo.PInfo.selectedSkin, PlayerInfo.PInfo.selectedUstencil);
             }
         }
 
         [PunRPC]
-        void RPC_AddCharacter(int whichCharacter)
+        void RPC_AddCharacter(int characterIndex, int ustencilIndex)
         {
-            playerSkin = whichCharacter;
+            playerSkin = characterIndex;
+            playerUstencil = ustencilIndex;
             Transform tr = transform;
-            avatar = Instantiate(PlayerInfo.PInfo.allCharacters[whichCharacter], tr.position, tr.rotation, tr);
+            avatar = Instantiate(PlayerInfo.PInfo.allCharacters[characterIndex], tr.position, tr.rotation, tr);
+            ustencil = Instantiate(PlayerInfo.PInfo.allUstencils[characterIndex], tr.position, tr.rotation, tr);
             PlayerController mvt = avatar.GetComponentInParent<PlayerController>();
             mvt.cam = Camera.main.transform;
             mvt.animator = avatar.GetComponentInChildren<Animator>();
+            mvt._ustencil = ustencil;
+            mvt.SetupUstencil();
         }
     }
 }

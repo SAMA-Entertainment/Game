@@ -897,8 +897,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   speed: 6
   maxstamina: 10
-  isRunning: 0
   turnSmoothTime: 0.1
+  _ustencil: {fileID: 0}
+  isRunning: 0
 --- !u!135 &6613146416569230730
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -964,4 +965,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSkin: 0
+  playerUstencil: 0
   avatar: {fileID: 0}
+  ustencil: {fileID: 0}

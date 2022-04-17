@@ -17,12 +17,14 @@ namespace player
         public Animator animator;
         public float speed = 6f;
         public float maxstamina = 10;
-        public bool isRunning;
         public float turnSmoothTime = 0.1f;
-        private float _turnSmoothVelocity;
 
+        public GameObject _ustencil;
+        public bool isRunning;
+        private float _turnSmoothVelocity;
         private int previousSpeed;
         private PhotonView _view;
+        private EquipmentController _equipmentController;
         public float Stamina => _stamina;
         private float _stamina = 10;
     
@@ -34,6 +36,16 @@ namespace player
                 TransformHelper.FindComponentInChildWithTag(this.gameObject, "MainCamera").SetActive(_view.IsMine); 
                 if(_view.IsMine) PlayerHUD.HUD.movement = this;
             }
+        }
+
+        public void SetupUstencil()
+        {
+            _equipmentController = GetComponentInChildren<EquipmentController>();
+            Transform hand = _equipmentController.rightHand.transform;
+            Transform tr = _ustencil.transform;
+            tr.parent = hand;
+            tr.localPosition = Vector3.zero;
+            tr.rotation = Quaternion.identity;
         }
 
         void Update()

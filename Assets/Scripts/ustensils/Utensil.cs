@@ -1,33 +1,14 @@
-using System.Collections.Generic;
-using mikunis;
 using UnityEngine;
 
-namespace player
+namespace ustensils
 {
-    public abstract class Utensil
+    public class Utensil : MonoBehaviour
     {
-        private readonly Transform player;
-        private readonly double speed;
-        private readonly double range;
-        private readonly uint capacity;
-        private readonly double strength;
+        public double speed;
+        public double range;
+        public uint capacity;
+        public double strength;
 
-        public double Speed => speed;
-        public double Range => range;
-        public uint Capacity => capacity;
-        public double Strength => strength;
-
-        public Utensil(Transform player, double speed, double range, uint capacity, double strength)
-        {
-            this.speed = speed;
-            this.range = range;
-            this.capacity = capacity;
-            this.strength = strength;
-        }
-
-        public List<Mikuni> GetMikunisInRange()
-        {
-            return new List<Mikuni>();
-        }
+        public Collider hitBox;
     }
 }

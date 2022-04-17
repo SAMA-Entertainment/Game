@@ -3357,6 +3357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2007189054123624577}
   - component: {fileID: 211560789033625183}
+  - component: {fileID: 6319690165155435265}
   m_Layer: 0
   m_Name: CookCharacter
   m_TagString: Player
@@ -3397,6 +3398,20 @@ MonoBehaviour:
   - {fileID: 2912814455325789519}
   - {fileID: 609048721268992482}
   - {fileID: 1178530708038770963}
+--- !u!114 &6319690165155435265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7601207050369537774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157b51390735412a9b13fe1f66006b1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHand: {fileID: 9137362884261446022}
+  rightHand: {fileID: 6018769766488017462}
 --- !u!1 &7938931608316590500
 GameObject:
   m_ObjectHideFlags: 0
