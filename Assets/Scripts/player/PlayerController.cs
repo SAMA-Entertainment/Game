@@ -121,5 +121,35 @@ namespace player
         {
             animator.SetFloat("Speed", speed);
         }
+
+        [PunRPC]
+        void RPC_CaptureMikuni(int viewId)
+        {
+            GameObject target = PhotonNetwork.GetPhotonView(viewId).gameObject;
+            Mikuni capturedMikuni = target.GetComponent<Mikuni>();
+            MikuniViewer viewer = GetComponentInChildren<MikuniViewer>();
+            if (capturedMikuni == null || viewer == null)
+            {
+                Debug.LogWarning("Received RPC_CaptureMikuni but " + (capturedMikuni == null
+                    ? " the target view is not a Mikuni" : "could not find MikuniViewer"));
+                return;
+            }
+            viewer.DisplayMikuni(target.GetComponent<Mikuni>(), true);
+        }
+        
+        [PunRPC]
+        void RPC_ReleaseMikuni(int viewId)
+        {
+            GameObject target = PhotonNetwork.GetPhotonView(viewId).gameObject;
+            Mikuni capturedMikuni = target.GetComponent<Mikuni>();
+            MikuniViewer viewer = GetComponentInChildren<MikuniViewer>();
+            if (capturedMikuni == null || viewer == null)
+            {
+                Debug.LogWarning("Received RPC_ReleaseMikuni but " + (capturedMikuni == null 
+                    ? " the target view is not a Mikuni" : "could not find MikuniViewer"));
+                return;
+            }
+            viewer.ReleaseMikuni(capturedMikuni.GetComponent<Mikuni>(), true);
+        }
     }
 }

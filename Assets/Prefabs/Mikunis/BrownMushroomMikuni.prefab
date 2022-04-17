@@ -108,6 +108,7 @@ MonoBehaviour:
   normalEyes: {fileID: 2800000, guid: fc067f929ed89a34eada791e048b474c, type: 3}
   scaredEyes: {fileID: 2800000, guid: 066d4beb7541db24abee77fd78bd85db, type: 3}
   capturedEyes: {fileID: 2800000, guid: 89677faddcfa67b4a9a4afe947e630ea, type: 3}
+  _view: {fileID: 0}
   bodyStartOffset: 0.0875
   body: {fileID: 6827414355156644417}
   animator: {fileID: 0}
@@ -152,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  m_SynchronizeScale: 1
   m_UseLocal: 1
 --- !u!1001 &5778176949534218840
 PrefabInstance:

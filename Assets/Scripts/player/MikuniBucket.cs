@@ -25,7 +25,7 @@ namespace player
             _isCatching = false;
             _caughtMikunis = new List<Mikuni>();
             _view = transform.parent.GetComponent<PhotonView>();
-            this.enabled = _view.IsMine;
+            this.gameObject.SetActive(_view.IsMine);
             if (_view.IsMine)
             {
                 PlayerHUD.HUD.mikuniBucketController = this;
@@ -81,7 +81,8 @@ namespace player
                 if (obj.activeSelf && target.State != Mikuni.STATE_CAPTURED)
                 {
                     _caughtMikunis.Add(target);
-                    _viewer.DisplayMikuni(target);
+                    _viewer.DisplayMikuni(target, false);
+                    _view.RPC("RPC_CaptureMikuni", RpcTarget.OthersBuffered, target._view.ViewID);
                     _isCatching = true;
                 }
             }
@@ -107,7 +108,8 @@ namespace player
         public void ReleaseOne()
         {
             Mikuni mikuni = _caughtMikunis[0];
-            _viewer.ReleaseMikuni(mikuni);
+            _view.RPC("RPC_ReleaseMikuni", RpcTarget.OthersBuffered, mikuni._view.ViewID);
+            _viewer.ReleaseMikuni(mikuni, false);
             _caughtMikunis.Remove(mikuni);
         }
 

@@ -78,6 +78,7 @@ MonoBehaviour:
   normalEyes: {fileID: 0}
   scaredEyes: {fileID: 0}
   capturedEyes: {fileID: 0}
+  _view: {fileID: 0}
   rotatingBody: {fileID: 8185423434505855748}
   rotSpeedX: 400
 --- !u!135 &6565269405986558261
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  m_SynchronizeScale: 1
   m_UseLocal: 1
 --- !u!1001 &7832097553260166849
 PrefabInstance:

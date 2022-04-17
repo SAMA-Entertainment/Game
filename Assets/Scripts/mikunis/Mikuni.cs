@@ -26,7 +26,7 @@ namespace mikunis
         public Texture scaredEyes;
         public Texture capturedEyes;
 
-        private PhotonView _view;
+        public PhotonView _view;
 
         private void Start()
         {
@@ -109,7 +109,6 @@ namespace mikunis
         [PunRPC]
         protected void RPC_SyncState(int mikuniState)
         {
-            Debug.Log("RPC_SyncState => " + mikuniState);
             _state = mikuniState;
             SetCapturedSilently(mikuniState == STATE_CAPTURED);
         }

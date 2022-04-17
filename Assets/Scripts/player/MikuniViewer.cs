@@ -10,32 +10,28 @@ namespace player
         public List<Transform> positions;
         private readonly List<Mikuni> _mikunis = new List<Mikuni>();
 
-        public void DisplayMikuni(Mikuni mikuni)
+        public void DisplayMikuni(Mikuni mikuni, bool remote)
         {
-            if(mikuni.State == Mikuni.STATE_CAPTURED) return;
-            mikuni.SetCaptured(true);
+            if (!remote)
+            {
+                mikuni.SetCaptured(true);
+            }
             _mikunis.Add(mikuni);
             Rerender();
         }
 
-        public void ReleaseMikuni(Mikuni mikuni)
+        public void ReleaseMikuni(Mikuni mikuni, bool remote)
         {
             if(mikuni.State != Mikuni.STATE_CAPTURED) return;
             mikuni.transform.parent = null;
             mikuni.gameObject.SetActive(true);
-            mikuni.SetCaptured(false);
             _mikunis.Remove(mikuni);
             Rerender();
-        }
-
-        public void RemoveMikuni(Mikuni mikuni)
-        {
-            if(mikuni.State != Mikuni.STATE_CAPTURED) return;
-            mikuni.transform.parent = null;
-            mikuni.transform.localScale = Vector3.one;
-            mikuni.gameObject.SetActive(true);
-            _mikunis.Remove(mikuni);
-            Rerender();
+            if (!remote)
+            {
+                mikuni.transform.localScale = Vector3.one;
+                mikuni.SetCaptured(false);
+            }
         }
 
         public void Rerender()
