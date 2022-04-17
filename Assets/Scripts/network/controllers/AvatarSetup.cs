@@ -26,7 +26,7 @@ namespace network.controllers
             playerSkin = whichCharacter;
             Transform tr = transform;
             avatar = Instantiate(PlayerInfo.PInfo.allCharacters[whichCharacter], tr.position, tr.rotation, tr);
-            ThirdPersonMovement mvt = avatar.GetComponentInParent<ThirdPersonMovement>();
+            PlayerController mvt = avatar.GetComponentInParent<PlayerController>();
             mvt.cam = Camera.main.transform;
             mvt.animator = avatar.GetComponentInChildren<Animator>();
         }

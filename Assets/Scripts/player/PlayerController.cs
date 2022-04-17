@@ -1,13 +1,17 @@
 using menus;
 using mikunis;
+using network.controllers;
 using Photon.Pun;
 using tools;
 using UnityEngine;
 
 namespace player
 {
-    public class ThirdPersonMovement : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
+        [HideInInspector]
+        public PhotonPlayer Player;
+        
         public CharacterController controller;
         public Transform cam;
         public Animator animator;

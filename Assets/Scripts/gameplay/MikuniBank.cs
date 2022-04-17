@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using mikunis;
-using Photon.Realtime;
+using network.controllers;
+using Photon.Pun;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,8 +18,9 @@ namespace gameplay
         {
         }
 
-        public bool Put(Player player, List<Mikuni> mikunis)
+        public bool Put(PhotonPlayer player, List<Mikuni> mikunis)
         {
+            if (mikunis.Count > 5) return false;
             foreach (Mikuni mikuni in mikunis)
             {
                 mikuni.gameObject.SetActive(true);
@@ -30,6 +32,8 @@ namespace gameplay
                 rb.isKinematic = false;
                 rb.detectCollisions = true;
             }
+            player._view.RPC("RPC_PushScore", RpcTarget.MasterClient, 
+                player.teamId, mikunis.Count);
 
             return true;
         }

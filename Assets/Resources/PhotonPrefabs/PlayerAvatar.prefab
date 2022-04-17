@@ -817,14 +817,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb6c885686fee541912070fd3137bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   controller: {fileID: 9059358526509905879}
   cam: {fileID: 0}
   animator: {fileID: 0}
   speed: 6
   maxstamina: 10
   isRunning: 0
-  jumpHeight: 1
-  jumpMultiplier: 2
   turnSmoothTime: 0.1
 --- !u!135 &6613146416569230730
 SphereCollider:

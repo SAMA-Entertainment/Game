@@ -41,7 +41,8 @@ namespace player
             {
                 if (_cauldron != null)
                 {
-                    bool success = _cauldron.GetComponent<MikuniBank>().Put(_view.Owner, _caughtMikunis);
+                    PlayerController controller = GetComponentInParent<PlayerController>();
+                    bool success = _cauldron.GetComponent<MikuniBank>().Put(controller.Player, _caughtMikunis);
                     if (success)
                     {
                         _viewer.Destroy();
@@ -72,13 +73,17 @@ namespace player
 
         void OnTriggerStay(Collider other)
         {
-            if (!other.gameObject.CompareTag("Mikuni")) return;
+            GameObject obj = other.gameObject;
+            if (!obj.CompareTag("Mikuni")) return;
             if (Input.GetMouseButtonDown(0) && !_isCatching && MikuniCatched < Capacity)
             {
-                Mikuni target = other.gameObject.GetComponent<Mikuni>();
-                _caughtMikunis.Add(target);
-                _viewer.DisplayMikuni(target);
-                _isCatching = true;
+                Mikuni target = obj.GetComponent<Mikuni>();
+                if (obj.activeSelf && target.State != Mikuni.STATE_CAPTURED)
+                {
+                    _caughtMikunis.Add(target);
+                    _viewer.DisplayMikuni(target);
+                    _isCatching = true;
+                }
             }
             else
             {
