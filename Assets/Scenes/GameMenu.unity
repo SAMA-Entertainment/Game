@@ -15585,7 +15585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedSkin: 0
   allCharacters:
-  - {fileID: 5310747947003129413, guid: 2756000ea6ad96f44b1cf6b155ee7c6f, type: 3}
+  - {fileID: 7601207050369537774, guid: 2756000ea6ad96f44b1cf6b155ee7c6f, type: 3}
 --- !u!4 &838742845
 Transform:
   m_ObjectHideFlags: 0
