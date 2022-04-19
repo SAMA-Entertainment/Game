@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9122341648847720412
+--- !u!114 &-8457675741767158080
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Soup
-  m_Shader: {fileID: -6465566751694194690, guid: 5130c6ef23388554f8296d2342306830, type: 3}
+  m_Name: SteamMat
+  m_Shader: {fileID: 202, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,10 +32,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_9a84145bcc28459998b57a7b69ef51d9:
-        m_Texture: {fileID: 2800000, guid: e2c86c2d623b8e949b4417d65acb3261, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -61,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8ba1e0fed79b1184c9e2ae4bb41967b8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -74,14 +70,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_3d3a90981b1d45bc8e4d997d64ccb6f4_Texture_1:
-        m_Texture: {fileID: 2800000, guid: d996471f59b56d447922314c121852b7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_4f70a2efcbdd4bba9696a348a0177343_Texture_1:
-        m_Texture: {fileID: 2800000, guid: d996471f59b56d447922314c121852b7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -101,16 +89,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_0e0af52a7f504073b730c50ea3ed6255: 5.72
-    - Vector1_17bcbd02143d4c65b83d4d53066c1f6d: 0.6
-    - Vector1_2414113877644bc39365f9fa4bd93373: 1
-    - Vector1_44af999cf94349448a7b97409173e27a: 4.04
-    - Vector1_49bee7512f224d7b8bdf689fdf27f409: 1.01
-    - Vector1_51d5d011aa4e4728a8cfa8b604031a60: 20
-    - Vector1_64463ecc68fe40dab2a0946fbfa052ad: 0.2
-    - Vector1_69763bec14b045f9932f5de678a0f140: 2.44
-    - Vector1_8ea245a99a574fddaf11f248433723fd: 0.5
-    - Vector1_eeaf89b69d144c0eba18d11618368c23: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -122,10 +100,10 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Fill: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _InvFade: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -136,20 +114,11 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WaterDepth: 10
-    - _WobbleX: 0
-    - _WobbleZ: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_1ac63583601b456b96dfe069d0f333e1: {r: 0.21960784, g: 0, b: 5.992157, a: 0}
-    - Color_8ad7e287d5d64b17a1f7fc162ccb5f2b: {r: 1, g: 0.9503594, b: 0.9198113, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepWaterColor: {r: 0.8773585, g: 0.75694835, b: 0.68284976, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _LiquidColor: {r: 0.9294118, g: 0.8784314, b: 0.8470588, a: 0.1176471}
-    - _ShallowWaterColor: {r: 0.9254902, g: 0.8745098, b: 0.84313726, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SurfaceColor: {r: 0.9294118, g: 0.8784314, b: 0.8470588, a: 1}
   m_BuildTextureStacks: []

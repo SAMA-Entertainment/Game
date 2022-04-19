@@ -17627,6 +17627,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 8.92
       objectReference: {fileID: 0}
+    - target: {fileID: 3545322134893079395, guid: 1ecc5c277e23a3c4489fd78da4ccd07f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6327175516911901994, guid: 1ecc5c277e23a3c4489fd78da4ccd07f, type: 3}
       propertyPath: m_Name
       value: Cauldron
