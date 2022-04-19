@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 
 namespace network
 {
-    public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
+    public class PhotonRoom : MonoBehaviourPunCallbacks
     {
         public static PhotonRoom CurrentRoom;
 
-        public int multiplayerSceneId = 1;
+        public int lobbySceneId = 1;
+        public int multiplayerSceneId = 2;
         public int CurrentScene => _currentScene;
 
         private PhotonView _view;
@@ -58,10 +59,6 @@ namespace network
             }
         }
 
-        private void Update()
-        {
-        }
-
         public override void OnJoinedRoom()
         {
             base.OnJoinedRoom();
@@ -69,15 +66,20 @@ namespace network
             _players = PhotonNetwork.PlayerList;
             PhotonNetwork.NickName = "Player" + _players.Length;
             if(PlayerInfo.PInfo != null) PlayerInfo.PInfo.SetSelectedSkin(0); // TODO: Change me
-            StartGame();
+            LoadScene(lobbySceneId);
         }
 
         public void StartGame()
         {
+            LoadScene(multiplayerSceneId);
+        }
+
+        private void LoadScene(int scene)
+        {
             if (!PhotonNetwork.IsMasterClient)
                 return;
-            
-            PhotonNetwork.LoadLevel(multiplayerSceneId);
+
+            PhotonNetwork.LoadLevel(scene);
         }
         
         private void CreatePlayer()

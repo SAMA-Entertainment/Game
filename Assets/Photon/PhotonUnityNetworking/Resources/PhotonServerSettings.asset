@@ -48,6 +48,7 @@ MonoBehaviour:
   - RPC_SyncCharacterAnim
   - RPC_CaptureMikuni
   - RPC_ReleaseMikuni
+  - RPC_UpdateReadyState
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
