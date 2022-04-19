@@ -33,9 +33,12 @@ namespace player
                 PlayerHUD.HUD.mikuniBucketController = this;
             }
             
-            _viewer = transform.parent.GetComponentInChildren<MikuniViewer>();
+            _viewer = Controller.GetComponentInChildren<MikuniViewer>();
             if (_viewer == null) throw new Exception("Missing MikuniViewer script in hierarchy");
-            transform.parent.GetComponentInChildren<AttackEvent>().OnAttack += AttackMikunis;
+            AttackEvent attackEvent = Controller.GetComponentInChildren<AttackEvent>();
+            attackEvent.OnAttackStarted += Controller._ustencil.StartCapturingSession;
+            attackEvent.OnAttackEnded += DisableUtencil;
+            Controller._ustencil.OnMikuniDetected += CaptureMikuni;
         }
         
         private void Update()
@@ -73,10 +76,10 @@ namespace player
             }
         }
 
-        public void AttackMikunis()
+        public void DisableUtencil()
         {
-            //Debug.Log("AttackMikunis()");
             Controller.animator.SetBool("IsAttacking", false);
+            Controller._ustencil.StopCapturingSession();
         }
 
         void OnTriggerStay(Collider other)
@@ -85,21 +88,17 @@ namespace player
             if (!obj.CompareTag("Mikuni")) return;
             if (Input.GetMouseButtonDown(0) && !_isCatching && MikuniCatched < Capacity)
             {
-                Mikuni target = obj.GetComponent<Mikuni>();
-                if (obj.activeSelf && target.State != Mikuni.STATE_CAPTURED)
-                {
-                    Controller.animator.SetBool("IsAttacking", true);
-                    _caughtMikunis.Add(target);
-                    _viewer.DisplayMikuni(target, false);
-                    _view.RPC("RPC_CaptureMikuni", RpcTarget.OthersBuffered, target._view.ViewID);
-                    _isCatching = true;
-                }
+                Controller.animator.SetBool("IsAttacking", true);
             }
-            else
-            {
-                _isCatching = false;
-            }
-        
+        }
+
+        public void CaptureMikuni(Mikuni target)
+        {
+            if (!target.gameObject.activeSelf || target.State == Mikuni.STATE_CAPTURED) return;
+            _caughtMikunis.Add(target);
+            _viewer.DisplayMikuni(target, false);
+            _view.RPC("RPC_CaptureMikuni", RpcTarget.OthersBuffered, target._view.ViewID);
+            Controller._ustencil.IncrementCaptureCounter();
         }
 
         /**

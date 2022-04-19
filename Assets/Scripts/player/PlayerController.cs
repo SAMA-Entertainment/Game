@@ -4,6 +4,7 @@ using network.controllers;
 using Photon.Pun;
 using tools;
 using UnityEngine;
+using ustensils;
 
 namespace player
 {
@@ -19,7 +20,7 @@ namespace player
         public float maxstamina = 10;
         public float turnSmoothTime = 0.1f;
 
-        public GameObject _ustencil;
+        public Utensil _ustencil;
         public bool isRunning;
         private float _turnSmoothVelocity;
         private int previousSpeed;
@@ -114,9 +115,9 @@ namespace player
         }
 
         /**
-     * This function is used to trigger the "Fleeing" state of nearby mikunis. Nearby mikunis
-     * are all mikunis within the collider on the current GameObject.
-     */
+         * This function is used to trigger the "Fleeing" state of nearby mikunis. Nearby mikunis
+         * are all mikunis within the collider on the current GameObject.
+         */
         void OnTriggerStay(Collider other)
         {
             Mikuni mikuniController =

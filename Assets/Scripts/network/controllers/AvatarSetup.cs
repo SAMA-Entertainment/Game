@@ -1,6 +1,7 @@
 ﻿using Photon.Pun;
 using player;
 using UnityEngine;
+using ustensils;
 
 namespace network.controllers
 {
@@ -35,7 +36,7 @@ namespace network.controllers
             PlayerController mvt = avatar.GetComponentInParent<PlayerController>();
             mvt.cam = Camera.main.transform;
             mvt.animator = avatar.GetComponentInChildren<Animator>();
-            mvt._ustencil = ustencil;
+            mvt._ustencil = ustencil.GetComponent<Utensil>();
             mvt.SetupUstencil();
         }
     }

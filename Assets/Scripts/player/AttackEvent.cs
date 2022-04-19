@@ -5,11 +5,18 @@ namespace player
 {
     public class AttackEvent : MonoBehaviour
     {
-        public event Action OnAttack;
+        public event Action OnAttackStarted;
 
-        void TriggerAttack()
+        void TriggerAttackStart()
         {
-            OnAttack?.Invoke();
+            OnAttackStarted?.Invoke();
+        }
+        
+        public event Action OnAttackEnded;
+
+        void TriggerAttackEnd()
+        {
+            OnAttackEnded?.Invoke();
         }
     }
 }
