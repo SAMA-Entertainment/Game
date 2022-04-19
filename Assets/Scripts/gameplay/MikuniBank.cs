@@ -26,6 +26,7 @@ namespace gameplay
                 mikuni.gameObject.SetActive(true);
                 Transform tr = mikuni.transform;
                 tr.parent = transform.parent.transform;
+                tr.localScale = Vector3.one;
                 tr.localPosition = Vector3.up * 5 + Random.Range(-1f, 1f) * Vector3.right 
                                                   + Random.Range(-1f, 1f) * Vector3.forward;
                 Rigidbody rb = mikuni.GetComponent<Rigidbody>();

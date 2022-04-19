@@ -11,7 +11,6 @@ namespace player
     public class MikuniBucket : MonoBehaviour
     {
         private PhotonView _view;
-        private bool _isCatching;
         private List<Mikuni> _caughtMikunis;
         private MikuniViewer _viewer;
 
@@ -23,7 +22,6 @@ namespace player
 
         void Start()
         {
-            _isCatching = false;
             _caughtMikunis = new List<Mikuni>();
             Controller = GetComponentInParent<PlayerController>();
             _view = transform.parent.GetComponent<PhotonView>();
@@ -43,7 +41,8 @@ namespace player
         
         private void Update()
         {
-            if (_view.IsMine && Input.GetKeyDown(KeyCode.R) && MikuniCatched > 0)
+            if (!_view.IsMine) return;
+            if (Input.GetKeyDown(KeyCode.R) && MikuniCatched > 0)
             {
                 if (_cauldron != null)
                 {
@@ -55,7 +54,13 @@ namespace player
                         return;
                     }
                 }
+
                 ReleaseOne();
+            }
+
+            if (Input.GetMouseButtonDown(0) && MikuniCatched < Capacity)
+            {
+                Controller.animator.SetBool("IsAttacking", true);
             }
         }
 
@@ -80,16 +85,6 @@ namespace player
         {
             Controller.animator.SetBool("IsAttacking", false);
             Controller._ustencil.StopCapturingSession();
-        }
-
-        void OnTriggerStay(Collider other)
-        {
-            GameObject obj = other.gameObject;
-            if (!obj.CompareTag("Mikuni")) return;
-            if (Input.GetMouseButtonDown(0) && !_isCatching && MikuniCatched < Capacity)
-            {
-                Controller.animator.SetBool("IsAttacking", true);
-            }
         }
 
         public void CaptureMikuni(Mikuni target)

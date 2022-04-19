@@ -22,7 +22,7 @@ namespace ustensils
          */
         public int CapturedCount => capturedCount;
 
-        private void Awake()
+        void Awake()
         {
             hitBox = GetComponent<Collider>();
             hitBox.enabled = false;
@@ -31,8 +31,8 @@ namespace ustensils
         public void StartCapturingSession()
         {
             hitBox.enabled = true;
+            if(!_capturing) capturedCount = 0;
             _capturing = true;
-            capturedCount = 0;
         }
 
         public void StopCapturingSession()
