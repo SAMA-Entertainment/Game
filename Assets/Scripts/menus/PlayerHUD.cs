@@ -1,3 +1,4 @@
+using network.controllers;
 using player;
 using TMPro;
 using UnityEngine;
@@ -10,25 +11,38 @@ namespace menus
         public static PlayerHUD HUD;
         
         [HideInInspector]
-        public ThirdPersonMovement movement;
+        public PlayerController movement;
         [HideInInspector] 
-        public CatchMikuni mikuniCatchController;
+        public MikuniBucket mikuniBucketController;
         
         public Slider progressBar;
         public GameObject mikuniCounterObject;
+        public GameObject redScoreDisplay;
+        public GameObject blueScoreDisplay;
         
         private void OnEnable()
         {
-            if (HUD == null) HUD = this;
+            if (HUD == null)
+            {
+                HUD = this;
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = false;
+            }
         }
 
         void LateUpdate()
         {
-            if (movement == null || mikuniCatchController == null) return;
+            if (movement == null || mikuniBucketController == null) return;
             float ratio = movement.Stamina / movement.maxstamina;
             progressBar.value = ratio;
             mikuniCounterObject.GetComponent<TextMeshProUGUI>().text = 
-                $"Mikunis: {mikuniCatchController.MikuniCatched}";
+                $"Mikunis: {mikuniBucketController.MikuniCatched}";
+            if (GameManager.Instance != null)
+            {
+                uint[] scores = GameManager.Instance.scores;
+                redScoreDisplay.GetComponent<TextMeshProUGUI>().text = scores[0].ToString();
+                blueScoreDisplay.GetComponent<TextMeshProUGUI>().text = scores[1].ToString();
+            }
         }
     
     }

@@ -40,6 +40,14 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - RPC_AddCharacter
+  - RPC_GetTeam
+  - RPC_UpdateTeam
+  - RPC_PushScore
+  - RPC_UpdateScore
+  - RPC_SyncState
+  - RPC_SyncCharacterAnim
+  - RPC_CaptureMikuni
+  - RPC_ReleaseMikuni
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

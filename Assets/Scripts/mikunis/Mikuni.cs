@@ -1,16 +1,17 @@
 using System;
 using JetBrains.Annotations;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace mikunis
 {
-    public abstract class Mikuni : MonoBehaviour
+    public class Mikuni : MonoBehaviour
     {
     
-        public readonly static int STATE_IDLE = 0;
-        public readonly static int STATE_FLEEING = 1;
-        public readonly static int STATE_CAPTURED = 2;
+        public static readonly int STATE_IDLE = 0;
+        public static readonly int STATE_FLEEING = 1;
+        public static readonly int STATE_CAPTURED = 2;
     
         private int _state;
         private float cooldown;
@@ -19,12 +20,15 @@ namespace mikunis
         [NotNull]
         public NavMeshAgent agent;
         public ParticleSystem spottedParticle;
-        public GameObject eyes;
 
-        public Texture normalEyes;
-        public Texture scaredEyes;
-        public Texture capturedEyes;
-    
+        public PhotonView _view;
+
+        private void Start()
+        {
+            _view = GetComponent<PhotonView>();
+            SetStateSilently(STATE_IDLE);
+        }
+
         protected virtual void FixedUpdate()
         {
             if (cooldown > 0)
@@ -32,15 +36,9 @@ namespace mikunis
                 cooldown -= Time.deltaTime;
                 return;
             }
-            if (_state == STATE_FLEEING && agent.velocity.sqrMagnitude <= 0.05)
+            if (_view.IsMine && _state == STATE_FLEEING && agent.velocity.sqrMagnitude <= 0.05)
             {
-                _state = STATE_IDLE;
-                if (eyes != null)
-                {
-                    Material material = eyes.GetComponent<Renderer>().material;
-                    material.SetTexture("_EyesTexture", normalEyes);
-                    material.SetFloat("_Shaking", 0);
-                }
+                SetState(STATE_IDLE);
             }
         }
 
@@ -55,18 +53,12 @@ namespace mikunis
          */
         public void PlayerNear(Transform player)
         {
-            if (_state == STATE_CAPTURED) return;
-            if(_state != STATE_FLEEING && spottedParticle != null){
+            if (!_view.IsMine || _state == STATE_CAPTURED) return;
+            if (_state != STATE_FLEEING && spottedParticle != null){
                 spottedParticle.Play();
                 cooldown = 2;
-                if (eyes != null)
-                {
-                    Material material = eyes.GetComponent<Renderer>().material;
-                    material.SetTexture("_EyesTexture", capturedEyes);
-                    material.SetFloat("_Shaking", 1);
-                }
             }
-            _state = STATE_FLEEING;
+            SetState(STATE_FLEEING);
 
             Vector3 dir = transform.position - player.transform.position;
             Vector3 newPos = transform.position + dir;
@@ -76,13 +68,43 @@ namespace mikunis
 
         public void SetCaptured(bool captured)
         {
-            _state = captured ? STATE_CAPTURED : STATE_IDLE;
-            agent.enabled = !captured;
-            if (eyes == null) return;
-            Material material = eyes.GetComponent<Renderer>().material;
-            material.SetTexture("_EyesTexture", scaredEyes);
-            material.SetFloat("_Shaking", 1);
+            SetState(captured ? STATE_CAPTURED : STATE_IDLE);
+            SetCapturedSilently(captured);
         }
 
+        private void SetCapturedSilently(bool captured)
+        {
+            agent.enabled = !captured;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.isKinematic = captured;
+            rb.detectCollisions = !captured;
+        }
+
+        protected void SetState(int state)
+        {
+            SetStateSilently(state);
+            _view.RPC("RPC_SyncState", RpcTarget.OthersBuffered, state);
+        }
+
+        [PunRPC]
+        protected void RPC_SyncState(int mikuniState)
+        {
+            SetStateSilently(mikuniState);
+        }
+
+        public virtual void SetStateSilently(int state)
+        {
+            _state = state;
+            GetComponent<Rigidbody>().constraints =
+                _state == STATE_IDLE ? RigidbodyConstraints.FreezeAll : RigidbodyConstraints.None;
+            agent.enabled = state == STATE_FLEEING;
+            SetCapturedSilently(state == STATE_CAPTURED);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = _state == STATE_IDLE ? Color.magenta : (_state == STATE_FLEEING ? Color.cyan : Color.yellow);
+            Gizmos.DrawWireSphere(transform.position, 1);
+        }
     }
 }
