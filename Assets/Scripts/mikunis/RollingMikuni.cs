@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace mikunis
 {
-    public class RollingMikuni : Mikuni
+    public class RollingMikuni : HidingMikuni
     {
 
         public Transform rotatingBody;

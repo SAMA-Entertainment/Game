@@ -74,11 +74,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5073933825753083398}
   spottedParticle: {fileID: 4698898406254683191}
-  eyes: {fileID: 0}
-  normalEyes: {fileID: 0}
-  scaredEyes: {fileID: 0}
-  capturedEyes: {fileID: 0}
   _view: {fileID: 5441365624463287576}
+  bodyStartOffset: 0
+  body: {fileID: 2193607105089482054}
+  animator: {fileID: 0}
+  bodyParts:
+  - {fileID: 1709730406887594154}
+  - {fileID: 3467358899191936797}
   rotatingBody: {fileID: 2193607105089482054}
   rotateDir: {x: 0, y: 0, z: 1}
   rotSpeedX: 500
@@ -222,6 +224,16 @@ PrefabInstance:
 --- !u!4 &2193607105089482054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ccc3039eaf54aa74b81dd8d9f1c7d869, type: 3}
+  m_PrefabInstance: {fileID: 1872366559915985581}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1709730406887594154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8196034790506049017, guid: ccc3039eaf54aa74b81dd8d9f1c7d869, type: 3}
+  m_PrefabInstance: {fileID: 1872366559915985581}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3467358899191936797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6204425389591020112, guid: ccc3039eaf54aa74b81dd8d9f1c7d869, type: 3}
   m_PrefabInstance: {fileID: 1872366559915985581}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7832097553260166849
