@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace mikunis.spawners
 {
-    public class MikuniBoxSpawner : MonoBehaviour
+    public class MikuniBoxSpawner : MikuniSpawner
     {
 
         public int capacity = 30;
@@ -24,19 +24,8 @@ namespace mikunis.spawners
 
         void Start()
         {
-            DefaultPool pool = PhotonNetwork.PrefabPool as DefaultPool;
-            if (pool != null && mikuniInstances != null)
-            {
-                foreach (Mikuni prefab in mikuniInstances)
-                {
-                    pool.ResourceCache.Add(prefab.name, prefab.gameObject);
-                }
-            }    
-            if (!PhotonNetwork.IsMasterClient)
-            {
-                this.enabled = false;
-                return;
-            }
+            Init(ToGameObjects(mikuniInstances));
+            if (!this.enabled) return;
             _spawnTimerState = spawnTimer;
             _spawning = false;
             if (burstMode)
@@ -45,7 +34,7 @@ namespace mikunis.spawners
             }
         }
 
-        void Update()
+        void LateUpdate()
         {
             if (burstMode || _spawning) return;
             _spawnTimerState -= Time.deltaTime;
@@ -67,7 +56,6 @@ namespace mikunis.spawners
             Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, 
                 new Vector3(width, 2, width), 
                 Quaternion.identity, LayerMask.GetMask("Default"));
-            // TODO: Replace this with an appropriate layer
             int nearbyMikunis = 0;
             foreach (Collider obj in hitColliders)
             {
@@ -92,8 +80,7 @@ namespace mikunis.spawners
                 position.x += Random.Range(-size, size+1);
                 position.z += Random.Range(-size, size+1);
                 yield return new WaitForSeconds(0.1f);
-                PhotonNetwork.Instantiate(mikuniInstances[idx].name, position,
-                    quaternion.identity);
+                Spawn(mikuniInstances[idx].gameObject, position, quaternion.identity);
             }
 
             _spawning = false;

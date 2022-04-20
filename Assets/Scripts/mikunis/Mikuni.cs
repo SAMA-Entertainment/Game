@@ -91,11 +91,12 @@ namespace mikunis
             SetStateSilently(mikuniState);
         }
 
-        protected void SetStateSilently(int state)
+        public void SetStateSilently(int state)
         {
             _state = state;
             GetComponent<Rigidbody>().constraints =
                 _state == STATE_IDLE ? RigidbodyConstraints.FreezeAll : RigidbodyConstraints.None;
+            agent.enabled = state == STATE_FLEEING;
             SetCapturedSilently(state == STATE_CAPTURED);
         }
 

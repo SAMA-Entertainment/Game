@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace mikunis.spawners
 {
-    public class MikuniClusterSpawner : MonoBehaviour
+    public class MikuniClusterSpawner : MikuniSpawner
     {
         public GameObject DummyModel;
         public GameObject MikuniModel;
@@ -18,7 +20,12 @@ namespace mikunis.spawners
 
         private List<GameObject> SpanwedMikunis = new List<GameObject>();
 
-        private void Update()
+        private void Start()
+        {
+            Init(new List<GameObject> { DummyModel, MikuniModel });
+        }
+
+        private void LateUpdate()
         {
             if (SpanwedMikunis.Count > 0) return; // TODO: Change me
             float size = width/2;
@@ -42,11 +49,12 @@ namespace mikunis.spawners
                 GameObject spawned;
                 if (dummy)
                 {
-                    spawned = Instantiate(DummyModel, position, rotation);
+                    spawned = Spawn(DummyModel, position, rotation);
                 }
                 else
                 {
-                    spawned = Instantiate(MikuniModel, position, rotation);
+                    spawned = Spawn(MikuniModel, position, rotation);
+                    spawned.GetComponent<Mikuni>().SetStateSilently(Mikuni.STATE_IDLE);
                 }
                 SpanwedMikunis.Add(spawned);
             }
@@ -55,8 +63,8 @@ namespace mikunis.spawners
         private Vector3 RandomPosition(float size)
         {
             Vector3 position = transform.position;
-            position.x += Random.Range(-size, size + 1);
-            position.z += Random.Range(-size, size + 1);
+            position.x += Random.Range(-size, size);
+            position.z += Random.Range(-size, size);
             if (stickToTerrain)
             {
                 if (Physics.Raycast(position, Vector3.down, out var hit, 10, 

@@ -880,10 +880,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DummyModel: {fileID: 2235584197989693526, guid: 6bd4b912912b7d94aaf3b20f519b5644, type: 3}
   MikuniModel: {fileID: 2235584197989693526, guid: fc0b6065ef86fe8498c2e70f8fe3ccc3, type: 3}
-  width: 3
-  spawnCount: 10
-  dummyProbability: 0.5
+  width: 3.5
+  spawnCount: 6
+  dummyProbability: 0.375
   rotationMask: {x: 0.05, y: 1, z: 0.05}
+  stickToTerrain: 1
 --- !u!4 &1004940104
 Transform:
   m_ObjectHideFlags: 0

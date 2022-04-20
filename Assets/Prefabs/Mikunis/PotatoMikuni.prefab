@@ -74,10 +74,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 8023677171642659727}
   spottedParticle: {fileID: 6428075135512035427}
-  eyes: {fileID: 0}
-  normalEyes: {fileID: 0}
-  scaredEyes: {fileID: 0}
-  capturedEyes: {fileID: 0}
   _view: {fileID: 2060081094700369351}
   bodyStartOffset: 0
   body: {fileID: 8303302031055771699}
