@@ -13,8 +13,9 @@ namespace mikunis.spawners
         public GameObject MikuniModel;
         public float width = 3;
         public int spawnCount = 6;
+        public float overlapThreshold = 0.4f;
         [Range(0, 1)]
-        public float dummyProbability = 0.6f;
+        public float dummyProbability = 0.45f;
         public Vector3 rotationMask = Vector3.one;
         public bool stickToTerrain = true;
 
@@ -41,7 +42,7 @@ namespace mikunis.spawners
                 do
                 {
                     position = RandomPosition(size);
-                    collision = Physics2D.OverlapCircle(position, 0.5f,
+                    collision = Physics2D.OverlapCircle(position, overlapThreshold,
                         LayerMask.GetMask("Default"));
                     tries++;
                 } while (collision && tries < 5);

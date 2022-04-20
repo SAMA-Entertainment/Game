@@ -26,6 +26,7 @@ namespace mikunis
         private void Start()
         {
             _view = GetComponent<PhotonView>();
+            SetStateSilently(STATE_IDLE);
         }
 
         protected virtual void FixedUpdate()
@@ -91,7 +92,7 @@ namespace mikunis
             SetStateSilently(mikuniState);
         }
 
-        public void SetStateSilently(int state)
+        public virtual void SetStateSilently(int state)
         {
             _state = state;
             GetComponent<Rigidbody>().constraints =

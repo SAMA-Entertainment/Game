@@ -15,6 +15,7 @@ namespace mikunis
 
         private bool _hiding;
 
+        /*
         // Update is called once per frame
         protected override void FixedUpdate()
         {
@@ -27,15 +28,7 @@ namespace mikunis
                     return;
                 }
             }
-            
-            if (_hiding && State == STATE_FLEEING)
-            {
-                ShowBodyParts();
-            } else if (!_hiding && State == STATE_IDLE)
-            {
-                HideBodyParts();
-            }
-        }
+        }*/
 
         public void ShowBodyParts()
         {
@@ -70,6 +63,19 @@ namespace mikunis
                 {
                     objectRenderer.enabled = !_hiding;
                 }
+            }
+        }
+
+        public override void SetStateSilently(int state)
+        {
+            base.SetStateSilently(state);
+            if (_hiding && State == STATE_FLEEING)
+            {
+                ShowBodyParts();
+            }
+            else if (!_hiding && State == STATE_IDLE)
+            {
+                HideBodyParts();
             }
         }
     }

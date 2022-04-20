@@ -47,7 +47,10 @@ namespace ustensils
             if (other.gameObject.CompareTag("Mikuni"))
             {
                 Mikuni mikuni = other.GetComponent<Mikuni>();
-                OnMikuniDetected?.Invoke(mikuni);
+                if (mikuni != null)
+                {
+                    OnMikuniDetected?.Invoke(mikuni);
+                }
             }
         }
 
