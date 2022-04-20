@@ -20,11 +20,6 @@ namespace mikunis
         [NotNull]
         public NavMeshAgent agent;
         public ParticleSystem spottedParticle;
-        public GameObject eyes;
-
-        public Texture normalEyes;
-        public Texture scaredEyes;
-        public Texture capturedEyes;
 
         public PhotonView _view;
 
@@ -43,12 +38,6 @@ namespace mikunis
             if (_view.IsMine && _state == STATE_FLEEING && agent.velocity.sqrMagnitude <= 0.05)
             {
                 SetState(STATE_IDLE);
-                if (eyes != null)
-                {
-                    Material material = eyes.GetComponent<Renderer>().material;
-                    material.SetTexture("_EyesTexture", normalEyes);
-                    material.SetFloat("_Shaking", 0);
-                }
             }
         }
 
@@ -67,12 +56,6 @@ namespace mikunis
             if (_state != STATE_FLEEING && spottedParticle != null){
                 spottedParticle.Play();
                 cooldown = 2;
-                if (eyes != null)
-                {
-                    Material material = eyes.GetComponent<Renderer>().material;
-                    material.SetTexture("_EyesTexture", capturedEyes);
-                    material.SetFloat("_Shaking", 1);
-                }
             }
             SetState(STATE_FLEEING);
 
@@ -94,23 +77,26 @@ namespace mikunis
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.isKinematic = captured;
             rb.detectCollisions = !captured;
-            if (eyes == null) return;
-            Material material = eyes.GetComponent<Renderer>().material;
-            material.SetTexture("_EyesTexture", scaredEyes);
-            material.SetFloat("_Shaking", 1);
         }
 
         protected void SetState(int state)
         {
-            _state = state;
+            SetStateSilently(state);
             _view.RPC("RPC_SyncState", RpcTarget.OthersBuffered, state);
         }
 
         [PunRPC]
         protected void RPC_SyncState(int mikuniState)
         {
-            _state = mikuniState;
-            SetCapturedSilently(mikuniState == STATE_CAPTURED);
+            SetStateSilently(mikuniState);
+        }
+
+        protected void SetStateSilently(int state)
+        {
+            _state = state;
+            GetComponent<Rigidbody>().constraints =
+                _state == STATE_IDLE ? RigidbodyConstraints.FreezeAll : RigidbodyConstraints.None;
+            SetCapturedSilently(state == STATE_CAPTURED);
         }
 
         private void OnDrawGizmos()

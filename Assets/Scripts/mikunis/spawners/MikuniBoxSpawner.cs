@@ -5,9 +5,9 @@ using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace mikunis
+namespace mikunis.spawners
 {
-    public class MikuniSpawner : MonoBehaviour
+    public class MikuniBoxSpawner : MonoBehaviour
     {
 
         public int capacity = 30;
