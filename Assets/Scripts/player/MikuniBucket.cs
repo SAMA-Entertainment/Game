@@ -33,9 +33,10 @@ namespace player
             
             _viewer = Controller.GetComponentInChildren<MikuniViewer>();
             if (_viewer == null) throw new Exception("Missing MikuniViewer script in hierarchy");
+            /*
             AttackEvent attackEvent = Controller.GetComponentInChildren<AttackEvent>();
             attackEvent.OnAttackStarted += Controller._ustencil.StartCapturingSession;
-            attackEvent.OnAttackEnded += DisableUtencil;
+            attackEvent.OnAttackEnded += DisableUtencil;*/
             Controller._ustencil.OnMikuniDetected += CaptureMikuni;
         }
         
@@ -58,9 +59,9 @@ namespace player
                 ReleaseOne();
             }
 
-            if (Input.GetMouseButtonDown(0) && MikuniCatched < Capacity)
+            if (Input.GetMouseButtonDown(0))
             {
-                Controller.animator.SetBool("IsAttacking", true);
+                Controller._ustencil.StartCapturingSession();
             }
         }
 

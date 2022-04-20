@@ -25,7 +25,7 @@ namespace player
         private float _turnSmoothVelocity;
         private int previousSpeed;
         private PhotonView _view;
-        private EquipmentController _equipmentController;
+        private UtensilHolder _utensilHolder;
         public float Stamina => _stamina;
         private float _stamina = 10;
     
@@ -41,10 +41,9 @@ namespace player
 
         public void SetupUstencil()
         {
-            _equipmentController = GetComponentInChildren<EquipmentController>();
-            Transform hand = _equipmentController.rightHand.transform;
+            _utensilHolder = GetComponentInChildren<UtensilHolder>();
             Transform tr = _ustencil.transform;
-            tr.parent = hand;
+            tr.parent = _utensilHolder.transform;
             tr.localPosition = Vector3.zero;
             tr.rotation = Quaternion.identity;
         }
