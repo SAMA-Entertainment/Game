@@ -32,7 +32,7 @@ namespace network.controllers
             playerUstencil = ustencilIndex;
             Transform tr = transform;
             avatar = Instantiate(PlayerInfo.PInfo.allCharacters[characterIndex], tr.position, tr.rotation, tr);
-            ustencil = Instantiate(PlayerInfo.PInfo.allUstencils[characterIndex], tr.position, tr.rotation, tr);
+            ustencil = Instantiate(PlayerInfo.PInfo.allUstencils[ustencilIndex], tr.position, tr.rotation, tr);
             PlayerController mvt = avatar.GetComponentInParent<PlayerController>();
             mvt.cam = Camera.main.transform;
             mvt.animator = avatar.GetComponentInChildren<Animator>();
