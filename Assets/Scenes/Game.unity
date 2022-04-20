@@ -1222,15 +1222,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   capacity: 30
-  width: 35
+  width: 80
   mikuniInstances:
   - {fileID: 1931751193413182749, guid: c20076c88c9478649914160c6281c8f9, type: 3}
   - {fileID: 6659450678103716949, guid: 063ce90a5297fd34a89bcb7304d49774, type: 3}
   - {fileID: 7610713711108038008, guid: 7497d47bb760dee4283f732035a7e3c3, type: 3}
   - {fileID: 775735668692349841, guid: fc0b6065ef86fe8498c2e70f8fe3ccc3, type: 3}
+  - {fileID: 1617095058155083450, guid: ad3c2f8f8c944874cbb7fa3e8972fea0, type: 3}
+  - {fileID: 1954237014797114277, guid: 65a6f9017465a18459fd88aaa19ee052, type: 3}
+  - {fileID: 510828380789937283, guid: fe2b95b62ae152f4696f49bf9575b28c, type: 3}
   burstMode: 1
   spawnTimer: 5
-  batchCount: 10
+  batchCount: 30
 --- !u!4 &1505237574
 Transform:
   m_ObjectHideFlags: 0
@@ -1239,7 +1242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505237572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.6, y: -0.37, z: -10.633141}
+  m_LocalPosition: {x: -0.1, y: -0.37, z: 1.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

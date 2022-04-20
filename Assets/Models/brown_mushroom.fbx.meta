@@ -7,17 +7,17 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CapMat
+      name: EyeMat
+    second: {fileID: 2100000, guid: f8fb81f6d6aaa344fbd6c6f114a63b0b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ToonCap
     second: {fileID: 2100000, guid: 6cc7bfb7a6440f6478948ddfedd8455a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Eyes
-    second: {fileID: 2100000, guid: 2f62b4ff5347bb041bf457a93ee75e48, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: StemMat
+      name: ToonStem
     second: {fileID: 2100000, guid: 6aedb618ef2298646a3d2cdbbad0440c, type: 2}
   materials:
     materialImportMode: 2
@@ -88,7 +88,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 46c1e12af90d35940938981c54f379ea
+guid: e63b5547189314a4ca2d3ef114450671
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,13 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Cauldron
-    second: {fileID: 2100000, guid: 6e7258de9f6dbd84abf087fcecb63b47, type: 2}
+      name: EyeMat
+    second: {fileID: 2100000, guid: f8fb81f6d6aaa344fbd6c6f114a63b0b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Handle
-    second: {fileID: 2100000, guid: 06397e689cba1a747afa5a7fb7e9846a, type: 2}
+      name: ToonCornCenter
+    second: {fileID: 2100000, guid: 8ee189e6b472a29429467213b02225bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ToonCornKernals
+    second: {fileID: 2100000, guid: b3e3a9b8010a3944ea351ebe9f98fb8b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
