@@ -108,6 +108,7 @@ MonoBehaviour:
   bodyStartOffset: 0.0575
   body: {fileID: 3836622721533998067}
   animator: {fileID: 0}
+  jumpingAnimation: 1
   bodyParts:
   - {fileID: 1723341320781796232}
   - {fileID: 7693447973530933853}

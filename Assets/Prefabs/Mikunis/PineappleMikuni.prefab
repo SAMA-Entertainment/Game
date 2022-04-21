@@ -57,7 +57,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.64
-  m_BaseOffset: 0.65
+  m_BaseOffset: 0.55
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7610713711108038008
@@ -78,6 +78,7 @@ MonoBehaviour:
   bodyStartOffset: 0
   body: {fileID: 5452508961172897782}
   animator: {fileID: 0}
+  jumpingAnimation: 1
   bodyParts:
   - {fileID: 4782920350939843098}
   - {fileID: 7333265938334508461}

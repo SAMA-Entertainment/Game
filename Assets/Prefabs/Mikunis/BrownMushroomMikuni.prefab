@@ -57,7 +57,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.48
-  m_BaseOffset: 0.67
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &6914511162059630211
@@ -73,7 +73,7 @@ CapsuleCollider:
   m_Radius: 0.54
   m_Height: 1.45
   m_Direction: 1
-  m_Center: {x: 0, y: -0, z: 0}
+  m_Center: {x: 0, y: 0.67, z: 0}
 --- !u!54 &1010090133517779124
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   bodyStartOffset: 0.0875
   body: {fileID: 6827414355156644417}
   animator: {fileID: 0}
+  jumpingAnimation: 1
   bodyParts:
   - {fileID: 1878369587863981564}
   - {fileID: 8869276227398427085}
@@ -248,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7e1c4de964c44049b0848fe2476ed06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.69
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7e1c4de964c44049b0848fe2476ed06, type: 3}
       propertyPath: m_LocalPosition.z

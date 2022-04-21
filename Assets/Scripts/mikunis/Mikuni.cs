@@ -23,7 +23,7 @@ namespace mikunis
 
         public PhotonView _view;
 
-        private void Start()
+        protected void Start()
         {
             _view = GetComponent<PhotonView>();
             SetStateSilently(STATE_IDLE);
@@ -34,14 +34,20 @@ namespace mikunis
             if (cooldown > 0)
             {
                 cooldown -= Time.deltaTime;
+                OnAnimation();
                 return;
             }
             if (_view.IsMine && _state == STATE_FLEEING && agent.velocity.sqrMagnitude <= 0.05)
             {
                 SetState(STATE_IDLE);
             }
+            OnAnimation();
         }
 
+        protected virtual void OnAnimation()
+        {
+        }
+        
         private void OnDestroy()
         {
             _state = STATE_CAPTURED;

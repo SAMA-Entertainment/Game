@@ -48,8 +48,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 1
-  m_Speed: 8
-  m_Acceleration: 6
+  m_Speed: 9
+  m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 70
   m_StoppingDistance: 0
@@ -78,6 +78,7 @@ MonoBehaviour:
   bodyStartOffset: 0
   body: {fileID: 8303302031055771699}
   animator: {fileID: 0}
+  jumpingAnimation: 1
   bodyParts:
   - {fileID: 8858630501129416159}
   - {fileID: 6725153740785287784}

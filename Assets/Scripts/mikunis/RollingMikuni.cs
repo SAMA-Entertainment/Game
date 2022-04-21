@@ -9,10 +9,8 @@ namespace mikunis
         public Vector3 rotateDir = Vector3.right;
         public float rotSpeedX = 250f;
 
-        protected override void FixedUpdate()
+        protected override void OnAnimation()
         {
-            base.FixedUpdate();
-            
             float speed = agent.velocity.magnitude/agent.speed;
             rotatingBody.Rotate(rotateDir, rotSpeedX * speed * Time.deltaTime);
         }

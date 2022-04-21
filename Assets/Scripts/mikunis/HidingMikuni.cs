@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace mikunis
 {
@@ -10,25 +9,47 @@ namespace mikunis
         public float bodyStartOffset;
         public Transform body;
         public Animator animator;
+
+        public bool jumpingAnimation = true;
+        
         // List of gameObject to hide when the Mikuni is hiding from the player
         public List<GameObject> bodyParts = new List<GameObject>();
 
+        /* Jumping properties */
+        private const double MaxPhase = 2 * Math.PI;
+        private float jumpFrequency = 0.5f;
+        private float jumpHeight = 0.6f;
+        private float jumpUpdateSpeed = 0.15f; // in rad/s
+        private float jumpLeaningEffect = 1.5f;
+        private float jumpMaxLeaningAngle = 15; // in degrees
+        
+        private Vector3 _basePosition;
+        private Quaternion _baseRotation;
         private bool _hiding;
+        private double _jumpPhase; // in rad
 
-        /*
-        // Update is called once per frame
-        protected override void FixedUpdate()
+        private new void Start()
         {
-            base.FixedUpdate();
-            if (animator != null)
-            {
-                animator.SetBool("IsRunning", State == STATE_FLEEING);
-                if(animator.IsInTransition(0)){
-                    agent.velocity = Vector3.zero;
-                    return;
-                }
-            }
-        }*/
+            base.Start();
+            _basePosition = body.localPosition;
+            _baseRotation = body.localRotation;
+        }
+
+        protected override void OnAnimation()
+        {
+            if (!jumpingAnimation || State != STATE_FLEEING) return;
+
+            double attenuation = agent.velocity.sqrMagnitude / Math.Pow(agent.speed, 2);
+            double vOffset = attenuation * Math.Sin(jumpFrequency * _jumpPhase);
+            _jumpPhase += jumpUpdateSpeed;
+            if (_jumpPhase > MaxPhase) _jumpPhase -= MaxPhase;
+
+            var rotation = (float) (vOffset - 0.5) * jumpLeaningEffect * jumpMaxLeaningAngle * Vector3.forward;
+            var position = Vector3.up * (float) vOffset * jumpHeight;
+            
+            body.localPosition = _basePosition + position;
+            body.localRotation = _baseRotation * Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+        }
 
         public void ShowBodyParts()
         {
@@ -75,6 +96,11 @@ namespace mikunis
             }
             else if (!_hiding && State == STATE_IDLE)
             {
+                if (jumpingAnimation)
+                {
+                    body.localRotation = _baseRotation;
+                    body.localPosition = _basePosition;
+                }
                 HideBodyParts();
             }
         }
