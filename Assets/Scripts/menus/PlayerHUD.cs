@@ -33,7 +33,7 @@ namespace menus
         void LateUpdate()
         {
             if (movement == null || mikuniBucketController == null) return;
-            float ratio = movement.Stamina / movement.maxstamina;
+            float ratio = movement.Stamina / movement.maxStamina;
             progressBar.value = ratio;
             mikuniCounterObject.GetComponent<TextMeshProUGUI>().text = 
                 $"Mikunis: {mikuniBucketController.MikuniCatched}";

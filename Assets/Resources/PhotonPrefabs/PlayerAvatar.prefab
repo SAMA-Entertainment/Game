@@ -895,10 +895,11 @@ MonoBehaviour:
   controller: {fileID: 9059358526509905879}
   cam: {fileID: 0}
   animator: {fileID: 0}
-  speed: 6
-  maxstamina: 10
+  baseSpeed: 6
+  runSpeedMultiplier: 1.84
+  maxStamina: 10
   turnSmoothTime: 0.1
-  _ustencil: {fileID: 0}
+  ustencil: {fileID: 0}
   isRunning: 0
 --- !u!135 &6613146416569230730
 SphereCollider:

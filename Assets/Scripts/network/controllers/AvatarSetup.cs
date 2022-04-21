@@ -36,8 +36,8 @@ namespace network.controllers
             PlayerController mvt = avatar.GetComponentInParent<PlayerController>();
             mvt.cam = Camera.main.transform;
             mvt.animator = avatar.GetComponentInChildren<Animator>();
-            mvt._ustencil = ustencil.GetComponent<Utensil>();
-            mvt.SetupUstencil();
+            mvt.ustencil = ustencil.GetComponent<Utensil>();
+            mvt.SetupUtensil();
         }
     }
 }

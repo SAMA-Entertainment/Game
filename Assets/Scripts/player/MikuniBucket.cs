@@ -37,7 +37,7 @@ namespace player
             AttackEvent attackEvent = Controller.GetComponentInChildren<AttackEvent>();
             attackEvent.OnAttackStarted += Controller._ustencil.StartCapturingSession;
             attackEvent.OnAttackEnded += DisableUtencil;*/
-            Controller._ustencil.OnMikuniDetected += CaptureMikuni;
+            Controller.ustencil.OnMikuniDetected += CaptureMikuni;
         }
         
         private void Update()
@@ -61,7 +61,7 @@ namespace player
 
             if (Input.GetMouseButtonDown(0))
             {
-                Controller._ustencil.StartCapturingSession();
+                Controller.ustencil.StartCapturingSession();
             }
         }
 
@@ -85,7 +85,7 @@ namespace player
         public void DisableUtencil()
         {
             Controller.animator.SetBool("IsAttacking", false);
-            Controller._ustencil.StopCapturingSession();
+            Controller.ustencil.StopCapturingSession();
         }
 
         public void CaptureMikuni(Mikuni target)
@@ -94,7 +94,7 @@ namespace player
             _caughtMikunis.Add(target);
             _viewer.DisplayMikuni(target, false);
             _view.RPC("RPC_CaptureMikuni", RpcTarget.OthersBuffered, target._view.ViewID);
-            Controller._ustencil.IncrementCaptureCounter();
+            Controller.ustencil.IncrementCaptureCounter();
         }
 
         /**

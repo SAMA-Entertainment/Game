@@ -16,22 +16,27 @@ namespace player
         public CharacterController controller;
         public Transform cam;
         public Animator animator;
-        public float speed = 6f;
-        public float maxstamina = 10;
+        public float baseSpeed = 6f;
+        public float runSpeedMultiplier = 1.84f;
+        public float maxStamina = 10;
         public float turnSmoothTime = 0.1f;
 
-        public Utensil _ustencil;
-        public bool isRunning;
+        [HideInInspector]
+        public Utensil ustencil;
+        private bool _isRunning;
+        public bool IsRunning => _isRunning;
+        
         private float _turnSmoothVelocity;
-        private int previousSpeed;
+        private int _previousSpeed;
         private PhotonView _view;
         private UtensilHolder _utensilHolder;
         public float Stamina => _stamina;
-        private float _stamina = 10;
+        private float _stamina;
     
         private void Start()
         {
             _view = GetComponent<PhotonView>();
+            _stamina = maxStamina;
             if (_view != null)
             {
                 TransformHelper.FindComponentInChildWithTag(this.gameObject, "MainCamera").SetActive(_view.IsMine); 
@@ -39,10 +44,10 @@ namespace player
             }
         }
 
-        public void SetupUstencil()
+        public void SetupUtensil()
         {
             _utensilHolder = GetComponentInChildren<UtensilHolder>();
-            Transform tr = _ustencil.transform;
+            Transform tr = ustencil.transform;
             tr.parent = _utensilHolder.transform;
             tr.localPosition = Vector3.zero;
             tr.rotation = Quaternion.identity;
@@ -64,29 +69,29 @@ namespace player
             if (!controller.isGrounded)
                 moveVector += Physics.gravity;
 
-            isRunning = Input.GetKey(KeyCode.LeftShift);
+            _isRunning = Input.GetKey(KeyCode.LeftShift);
             if (dir.magnitude >= 0.1f) // enough movement
             {
-                float speed = this.speed;
-                if (isRunning && _stamina > 0.15)
+                float speed = baseSpeed;
+                if (_isRunning && _stamina > 0.15)
                 {
                     _stamina -= Time.deltaTime;
-                    speed *= 1.8f;
+                    speed *= runSpeedMultiplier;
                     if (_stamina < 0)
                     {
                         _stamina = 0;
-                        isRunning = false;
+                        _isRunning = false;
                     }
                 }
 
-                if (speed >= 10 && previousSpeed != 10)
+                if (speed >= 10 && _previousSpeed != 10)
                 {
                     _view.RPC("RPC_SyncCharacterAnim", RpcTarget.Others, 10);
-                    previousSpeed = 10;
-                } else if (speed >= 6 && previousSpeed != 6)
+                    _previousSpeed = 10;
+                } else if (speed >= 6 && _previousSpeed != 6)
                 {
                     _view.RPC("RPC_SyncCharacterAnim", RpcTarget.Others, 6);
-                    previousSpeed = 6;
+                    _previousSpeed = 6;
                 }
             
                 float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -99,15 +104,15 @@ namespace player
             else
             {
                 animator.SetFloat("Speed", 0f);
-                if (previousSpeed != 0f)
+                if (_previousSpeed != 0f)
                 {
                     _view.RPC("RPC_SyncCharacterAnim", RpcTarget.Others, 0);
                 }
                 controller.Move(moveVector * Time.deltaTime);
-                previousSpeed = 0;
+                _previousSpeed = 0;
             }
         
-            if (!isRunning && _stamina < maxstamina)
+            if (!_isRunning && _stamina < maxStamina)
             {
                 _stamina += Time.deltaTime;
             }
