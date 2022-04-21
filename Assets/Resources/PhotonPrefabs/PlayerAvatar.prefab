@@ -900,7 +900,6 @@ MonoBehaviour:
   maxStamina: 10
   turnSmoothTime: 0.1
   ustencil: {fileID: 0}
-  isRunning: 0
 --- !u!135 &6613146416569230730
 SphereCollider:
   m_ObjectHideFlags: 0
